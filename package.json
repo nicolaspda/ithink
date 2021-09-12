@@ -19,5 +19,17 @@
     "@nuxtjs/vuetify": "^1.12.1",
     "eslint-config-prettier": "^8.3.0",
     "prettier": "^2.3.2"
-  }
+  },
+  "description": "```bash\r # install dependencies\r $ npm install",
+  "main": "nuxt.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolaspda/ithink.git"
+  },
+  "author": "Nicolas Pedroso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicolaspda/ithink/issues"
+  },
+  "homepage": "https://github.com/nicolaspda/ithink#readme"
 }

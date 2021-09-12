@@ -1,77 +1,88 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
+      <iThinkLogo />
+      <br />
+      <v-card elevation="7">
         <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
+          <NuxtLink to="/inspire"> {Categoria} </NuxtLink>
+          &nbsp; - &nbsp;
+          <NuxtLink to="/inspire"> {Nome do Obj} </NuxtLink>
         </v-card-title>
         <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
+          <v-row>
+            <v-col>
+              <v-avatar>
+                <img
+                  src="https://cdn.vuetifyjs.com/images/john.jpg"
+                  alt="John"
+                />
+              </v-avatar>
+              <br /><br /><br />
+              <v-row style="max-width: 100px">
+                <v-slider
+                  v-model="val"
+                  thumb-label="always"
+                  thumb-size="24"
+                  :thumb-color="colorTip"
+                  :track-color="colorAfter"
+                  color="red"
+                  readonly
+                ></v-slider>
+              </v-row>
+            </v-col>
+            <v-col cols="9" align="center">
+              <NuxtLink to="/inspire"> Lorem ipsum dolor sit amet consectetur adipisicing elit. At eaque quidem animi, sapiente deserunt nobis accusamus exercitationem atque numquam alias eum aliquid eligendi perspiciatis consequuntur facere neque aperiam qui laudantium? </NuxtLink>
+            </v-col>
+          </v-row>
+
+          <hr class="my-3" />
+          <v-row>
+            <v-col align="left">
+              <em><small>&mdash; Nicolas Pedroso</small></em>
+            </v-col>
+            <v-col align="right">
+              <v-btn class="ma-2" text icon @click.once="countUp">
+                <v-icon color="green lighten-2">{{mdiUp}}</v-icon>
+                {{ resultUp }}
+              </v-btn>
+              <v-btn class="ma-2" text icon @click.once="countDown">
+                <v-icon color="red lighten-2">{{mdiDown}}</v-icon>
+                {{ resultDown }}
+              </v-btn>
+            </v-col>
+          </v-row>
         </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
       </v-card>
     </v-col>
   </v-row>
 </template>
+
+<style></style>
+
+<script>
+export default {
+  data() {
+    return {
+      resultUp: 0,
+      resultDown: 0,
+      clicked: true,
+      colorTip: '#424242',
+      colorAfter: '#81C784',
+      val: 50,
+      mdiDown: 'mdi-thumb-down-outline',
+      mdiUp: 'mdi-thumb-up-outline',
+    }
+  },
+  methods: {
+    countUp() {
+      this.resultUp += 1
+      this.mdiUp = 'mdi-thumb-up'
+    },
+    countDown() {
+      this.resultDown += 1
+      this.mdiDown = 'mdi-thumb-down'
+    },
+  },
+}
+</script>
