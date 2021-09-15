@@ -1,14 +1,18 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
-      <iThinkLogo />
+      <iThinkLogo class="animate__animated animate__bounce" />
       <br />
       <SearchBar />
+        <v-row justify="center" align="center">
+        <v-icon color="green accent-2" x-large>mdi-trending-up</v-icon>
+      </v-row>
+      <br />
       <v-card elevation="7">
         <v-card-title class="headline">
-          <NuxtLink to="/inspire"> {Categoria} </NuxtLink>
+          <NuxtLink to="/inspire"> Categoria </NuxtLink>
           &nbsp; - &nbsp;
-          <NuxtLink to="/inspire"> {Nome do Obj} </NuxtLink>
+          <NuxtLink to="/inspire"> Nome do Obj </NuxtLink>
         </v-card-title>
         <v-card-text>
           <v-row>
@@ -62,6 +66,7 @@
 <style></style>
 
 <script>
+import 'animate.css'
 import SearchBar from '~/components/SearchBar.vue'
 export default {
   components: { SearchBar },
