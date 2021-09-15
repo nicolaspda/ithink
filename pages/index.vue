@@ -3,6 +3,7 @@
     <v-col cols="12" sm="8" md="6">
       <iThinkLogo />
       <br />
+      <SearchBar />
       <v-card elevation="7">
         <v-card-title class="headline">
           <NuxtLink to="/inspire"> {Categoria} </NuxtLink>
@@ -42,11 +43,11 @@
               <em><small>&mdash; Nicolas Pedroso</small></em>
             </v-col>
             <v-col align="right">
-              <v-btn class="ma-2" text icon @click.once="countUp">
+              <v-btn class="ma-2" text icon @click="countUp">
                 <v-icon color="green lighten-2">{{mdiUp}}</v-icon>
                 {{ resultUp }}
               </v-btn>
-              <v-btn class="ma-2" text icon @click.once="countDown">
+              <v-btn class="ma-2" text icon @click="countDown">
                 <v-icon color="red lighten-2">{{mdiDown}}</v-icon>
                 {{ resultDown }}
               </v-btn>
@@ -61,27 +62,48 @@
 <style></style>
 
 <script>
+import SearchBar from '~/components/SearchBar.vue'
 export default {
+  components: { SearchBar },
   data() {
     return {
+
+      /*Likes*/
       resultUp: 0,
       resultDown: 0,
-      clicked: true,
+      notActive: true,
+      mdiDown: 'mdi-thumb-down-outline',
+      mdiUp: 'mdi-thumb-up-outline',
+
+
+      /*Slider*/
       colorTip: '#424242',
       colorAfter: '#81C784',
       val: 50,
-      mdiDown: 'mdi-thumb-down-outline',
-      mdiUp: 'mdi-thumb-up-outline',
     }
   },
   methods: {
-    countUp() {
-      this.resultUp += 1
-      this.mdiUp = 'mdi-thumb-up'
+    countUp() { 
+      //arrumar BUG de clique nos 2
+      if(this.notActive = this.notActive){
+        this.resultUp += 1
+        this.mdiUp = 'mdi-thumb-up'
+      }
+      if(this.notActive = !this.notActive){
+        this.resultUp -= 1
+        this.mdiUp = 'mdi-thumb-up-outline' 
+      }
+      
     },
     countDown() {
-      this.resultDown += 1
-      this.mdiDown = 'mdi-thumb-down'
+      if(this.notActive = this.notActive){
+        this.resultDown += 1
+        this.mdiDown = 'mdi-thumb-down'
+      }
+      if(this.notActive = !this.notActive){
+        this.resultDown -= 1
+        this.mdiDown = 'mdi-thumb-down-outline' 
+      }
     },
   },
 }
