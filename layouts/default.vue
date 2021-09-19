@@ -1,9 +1,8 @@
 <template>
-  <v-app id="content">
-    <v-main>
+  <v-app>
+    <v-main id="main">
       <v-container>
-        <Nuxt />
-        
+        <Nuxt />        
       </v-container>
     </v-main>
     <v-footer>
@@ -13,10 +12,9 @@
 </template>
 
 <script>
-
 </script>
 
 <style>
 
-#content{background-color: #5F67B6}
+#main {background-color: #5F67B6}
 </style>
