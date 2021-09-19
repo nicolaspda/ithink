@@ -35,9 +35,9 @@
         <br />
         <Card />
         <br />
-      <Data />
       </v-container>
     </v-col>
+    <Data />
   </v-row>
  </div>
 </template>
