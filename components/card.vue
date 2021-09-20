@@ -45,9 +45,8 @@
 
 <script>
 export default {
-  data() {
-    return {
-
+data: function () {
+  return {
       /*Likes*/
       resultUp: 0,
       resultDown: 0,
@@ -55,7 +54,6 @@ export default {
       notActiveDown: true,
       mdiDown: 'mdi-thumb-down-outline',
       mdiUp: 'mdi-thumb-up-outline',
-
     }
   },
   methods: {

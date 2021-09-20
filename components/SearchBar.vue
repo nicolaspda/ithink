@@ -17,8 +17,8 @@
 import axios from "axios";
 
 export default {
-  data() {
-    return {
+  data: function () {
+  return {
       titulos: [],
     };
   },
