@@ -21,7 +21,7 @@ export default {
       /*Slider*/
       colorTip: '#424242',
       colorAfter: '#E57373',
-      total: 90,
+      total: 80,
       showSlider: true,
     }
   },

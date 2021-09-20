@@ -1,8 +1,8 @@
 <template>
-   <v-container id="sticky">
+   <v-container>
           <v-speed-dial
             v-model="fab"
-            absolute
+            fixed
             bottom
             right
             direction="top"
@@ -24,23 +24,33 @@
             <v-btn fab dark small color="red">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
+             <v-btn
+            fab
+            dark
+            x-small
+            color="primary"
+            @click="toTop"
+          >
+            <v-icon>mdi-arrow-up</v-icon>
+          </v-btn>
           </v-speed-dial>
   </v-container>
 </template>
 
 <style scoped>
 
-#sticky{     
-     position:sticky; 
-     bottom:0; 
-}
 </style>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "Options",
   data: () => ({
     fab: false,
   }),
+  methods: {
+        toTop () {
+      this.$vuetify.goTo(0)
+    }
+  }
 };
 </script>

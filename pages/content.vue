@@ -2,7 +2,7 @@
 <div>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
-      <v-app-bar color="#6A76AB" dark prominent extended absolute rounded>
+      <v-app-bar color="#6A76AB" dark prominent extended absolute rounded >
         <v-app-bar-title>Shazam!</v-app-bar-title>
         <v-row>
           <v-col align="right">
