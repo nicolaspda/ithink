@@ -3,7 +3,7 @@
     <v-card-title class="headline">
       <NuxtLink to="/inspire"> Categoria </NuxtLink>
       &nbsp; - &nbsp;
-      <NuxtLink to="/content"> Nome do Obj </NuxtLink>
+      <NuxtLink to="/content"> {{cards}} </NuxtLink>
     </v-card-title>
     <v-card-text>
       <v-row>
@@ -16,8 +16,7 @@
           <v-icon color="green lighten-2">mdi-thumb-up</v-icon>
         </v-col>
         <v-col cols="9" align="center">
-          <NuxtLink to="/inspire" v-for="card in cards" :key="card.name">
-            {{card.name}}
+          <NuxtLink to="/inspire">      
           </NuxtLink>
         </v-col>
       </v-row>
@@ -43,11 +42,11 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
+   props: ['cards'],
   data: function () {
   return {
-      cards: [],
+   
       /*Likes*/
       resultUp: 0,
       resultDown: 0,
@@ -58,13 +57,6 @@ export default {
     };
   },
   methods: {
-    getCards: function () {
-      axios
-        .get("https://api.jsonbin.io/b/614151d19548541c29b230c3/4")
-        .then((response) => {
-          this.cards = response.data;
-        });
-    },
     countUp() {
       //arrumar BUG de clique nos 2
       if (this.notActiveUp == true) {
@@ -89,9 +81,6 @@ export default {
       }
     }
   },
-    created: function () {
-      this.getCards();
-    },
 };
 
 </script>

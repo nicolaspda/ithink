@@ -52,7 +52,7 @@
             </v-col>
             <v-col cols="9" align="center">
               <v-textarea
-                v-model="form"
+                
                 color="teal"
                 label="Digite aqui"
                 dense

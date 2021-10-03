@@ -21,7 +21,8 @@
 
       <v-container>
         <!-- Aqui vão aparecer os cards -->
-        <Card />
+        <Card v-for="card in cards" :key="card.name" :cards="card.name"/>
+        <br />
         <br />
       </v-container>
     </v-col>
@@ -39,15 +40,29 @@ body {
 <script>
 import Card from '~/components/card.vue'
 import slider from '~/components/slider.vue'
+import axios from "axios";
+
 
 export default {
-  components: { slider, Card },
-  data() {
-    return {
-      
-
-    }
+   components: { slider, Card },
+  data: function () {
+  return {
+    cards: [],
   }
+ },
+  methods: {
+    getCards: function () {
+      axios
+        .get("https://api.jsonbin.io/b/614151d19548541c29b230c3/4")
+        .then((response) => {
+          this.cards = response.data;
+        });
+    },
+    
+},
+  created: function () {
+      this.getCards();
+    },
 
 }
 </script>
