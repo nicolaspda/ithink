@@ -23,18 +23,6 @@
         <!-- Aqui vão aparecer os cards -->
         <Card />
         <br />
-        <Card />
-        <br />
-        <Card />
-        <br />
-        <Card />
-        <br />
-        <Card />
-        <br />
-        <Card />
-        <br />
-        <Card />
-        <br />
       </v-container>
     </v-col>
     <Data />
@@ -56,6 +44,7 @@ export default {
   components: { slider, Card },
   data() {
     return {
+      
 
     }
   }
