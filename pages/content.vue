@@ -3,7 +3,7 @@
     <v-row justify="center" align="center">
       <v-col cols="12" sm="8" md="6">
         <v-app-bar color="#6A76AB" dark prominent extended absolute rounded>
-          <v-app-bar-title>titulo</v-app-bar-title>
+          <v-app-bar-title>Titulo</v-app-bar-title>
           <v-row>
             <v-col align="right">
               <v-img
@@ -51,6 +51,7 @@ export default {
   components: { slider, Card },
   data: function () {
     return {
+      select:'',
       cards: [],
     }
   },

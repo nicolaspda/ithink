@@ -11,7 +11,11 @@
       item-value="item-disabled"
       v-model="select"
       @change="go"
-    ></v-autocomplete>
+    >
+    <template v-slot:item="{ item }">
+        <v-list-item link :to="'content/'">{{item.title}}</v-list-item>
+    </template>
+    </v-autocomplete>
   </div>
 </template>
 
@@ -37,6 +41,7 @@ export default {
     },
     go: function () {
       console.log('foi')
+
     },
   },
   created: function () {
