@@ -1,6 +1,6 @@
 <template>
-<div>
-<v-autocomplete
+  <div>
+    <v-autocomplete
       clearable
       rounded
       dense
@@ -9,34 +9,39 @@
       :items="titulos"
       item-text="title"
       item-value="item-disabled"
+      v-model="select"
+      @change="go"
     ></v-autocomplete>
-</div>
+  </div>
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 
 export default {
   data: function () {
-  return {
+    return {
       titulos: [],
-    };
+      select: '',
+    }
   },
   methods: {
     gettitulo: function () {
       axios
-        .get("https://raw.githubusercontent.com/meilisearch/MeiliSearch/main/datasets/movies/movies.json")
+        .get(
+          'https://raw.githubusercontent.com/meilisearch/MeiliSearch/main/datasets/movies/movies.json'
+        )
         .then((response) => {
-          this.titulos = response.data;
-        });
+          this.titulos = response.data
+        })
+    },
+    go: function () {
+      console.log('foi')
     },
   },
-    created: function () {
-      this.gettitulo();
-    },
-};
-  
+  created: function () {
+    this.gettitulo()
+  },
+}
 </script>
-<style>
-
-</style>
+<style></style>

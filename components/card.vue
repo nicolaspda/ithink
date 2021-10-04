@@ -1,9 +1,9 @@
 <template>
-  <v-card elevation="7">
+  <v-card elevation="7" class="mb-5">
     <v-card-title class="headline">
-      <NuxtLink to="/inspire"> Categoria </NuxtLink>
+      <NuxtLink to="/inspire"> {{ category }} </NuxtLink>
       &nbsp; - &nbsp;
-      <NuxtLink to="/content"> {{cards}} </NuxtLink>
+      <NuxtLink to="/content"> {{ name }} </NuxtLink>
     </v-card-title>
     <v-card-text>
       <v-row>
@@ -12,11 +12,12 @@
             <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
           </v-avatar>
           <br /><br /><br />
-          <Slider />
+
           <v-icon color="green lighten-2">mdi-thumb-up</v-icon>
         </v-col>
         <v-col cols="9" align="center">
-          <NuxtLink to="/inspire">      
+          <NuxtLink to="/inspire">
+            {{ description }}
           </NuxtLink>
         </v-col>
       </v-row>
@@ -43,10 +44,9 @@
 
 <script>
 export default {
-   props: ['cards'],
+  props: ['name', 'category', 'description'],
   data: function () {
-  return {
-   
+    return {
       /*Likes*/
       resultUp: 0,
       resultDown: 0,
@@ -54,7 +54,7 @@ export default {
       notActiveDown: true,
       mdiDown: 'mdi-thumb-down-outline',
       mdiUp: 'mdi-thumb-up-outline',
-    };
+    }
   },
   methods: {
     countUp() {
@@ -79,10 +79,9 @@ export default {
         this.mdiDown = 'mdi-thumb-down-outline'
         this.notActiveDown = true
       }
-    }
+    },
   },
-};
-
+}
 </script>
 
 <style></style>
