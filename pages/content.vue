@@ -3,11 +3,11 @@
     <v-row justify="center" align="center">
       <v-col cols="12" sm="8" md="6">
         <v-app-bar color="#6A76AB" dark prominent extended absolute rounded>
-          <v-app-bar-title>Titulo</v-app-bar-title>
+          <v-app-bar-title>{{title}}</v-app-bar-title>
           <v-row>
             <v-col align="right">
               <v-img
-                src="https://image.tmdb.org/t/p/w500/xnopI5Xtky18MPhK40cZAGAOVeV.jpg"
+                :src="img"
                 max-height="140"
                 max-width="100"
               ></v-img>
@@ -51,7 +51,8 @@ export default {
   components: { slider, Card },
   data: function () {
     return {
-      select:'',
+      title:'',
+      img: '',
       cards: [],
     }
   },
@@ -65,7 +66,9 @@ export default {
     },
   },
   created: function () {
-    this.getCards()
+    this.getCards();
+    this.title = this.$nuxt._route.query.title;
+    this.img = this.$nuxt._route.query.img
   },
 }
 </script>

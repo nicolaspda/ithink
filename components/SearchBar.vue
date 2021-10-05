@@ -9,11 +9,10 @@
       :items="titulos"
       item-text="title"
       item-value="item-disabled"
-      v-model="select"
       @change="go"
     >
     <template v-slot:item="{ item }">
-        <v-list-item link :to="'content/'">{{item.title}}</v-list-item>
+        <v-list-item link :to="{ path: 'content/', query: { title: item.title, img:item.poster }}">{{item.title}}</v-list-item>
     </template>
     </v-autocomplete>
   </div>
@@ -26,7 +25,6 @@ export default {
   data: function () {
     return {
       titulos: [],
-      select: '',
     }
   },
   methods: {
