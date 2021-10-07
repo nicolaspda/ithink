@@ -31,7 +31,7 @@
           <br />
         </v-container>
       </v-col>
-      <Data />
+      <Data :title="title" />
     </v-row>
   </div>
 </template>

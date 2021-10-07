@@ -27,7 +27,7 @@
     </v-speed-dial>
     <v-dialog v-model="dialog" persistent max-width="600px">
       <v-card elevation="7">
-        <v-card-title class="headline"> Categoria - Nome do Obj </v-card-title>
+        <v-card-title class="headline"> Categoria - {{title}}</v-card-title>
         <v-card-text>
           <v-row>
             <v-col align="center">
@@ -89,6 +89,7 @@
 <script>
 export default {
   name: 'Options',
+  props: ['title'],
   data: function () {
     return {
       fab: false,
