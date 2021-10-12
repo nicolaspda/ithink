@@ -22,7 +22,7 @@
         <v-container>
           <!-- Aqui vão aparecer os cards -->
           <Card
-            v-for="card in cards"
+            v-for="card in filterCards"
             :key="card.name"
             :name="card.name"
             :category="card.category"
@@ -66,9 +66,17 @@ export default {
     },
   },
   created: function () {
-    this.getCards();
     this.title = this.$nuxt._route.query.title;
-    this.img = this.$nuxt._route.query.img
+    this.img = this.$nuxt._route.query.img;
+    this.getCards();
   },
+  computed:{
+    filterCards:function(){
+      return this.cards.filter((card) =>{
+        return card.name.match(this.title);
+      })
+    }
+
+  }
 }
 </script>
