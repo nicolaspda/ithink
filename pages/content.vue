@@ -12,7 +12,7 @@
                 max-width="100"
               ></v-img>
               <v-col>
-                <Slider />
+                <Slider v-for="card in filterCards" :key="card.name" :total="card.total" />
               </v-col>
             </v-col>
           </v-row>
@@ -76,7 +76,6 @@ export default {
         return card.name.match(this.title);
       })
     }
-
   }
 }
 </script>

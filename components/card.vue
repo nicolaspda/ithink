@@ -1,5 +1,5 @@
 <template>
-  <v-card elevation="7" class="mb-5">
+  <v-card elevation="7" class="mb-5" >
     <v-card-title class="headline">
       <NuxtLink to="/inspire"> {{ category }} </NuxtLink>
       &nbsp; - &nbsp;
@@ -13,7 +13,8 @@
           </v-avatar>
           <br /><br /><br />
 
-          <v-icon color="green lighten-2">mdi-thumb-up</v-icon>
+          <v-icon v-if="grade" color="green lighten-2">mdi-thumb-up</v-icon>
+          <v-icon v-else color="red lighten-2">mdi-thumb-down</v-icon>
         </v-col>
         <v-col cols="9" align="center">
           <NuxtLink to="/inspire">
@@ -54,6 +55,7 @@ export default {
       notActiveDown: true,
       mdiDown: 'mdi-thumb-down-outline',
       mdiUp: 'mdi-thumb-up-outline',
+      grade: true,
     }
   },
   methods: {

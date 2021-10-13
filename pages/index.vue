@@ -19,7 +19,6 @@
 </style>
 
 <script>
-import 'animate.css'
 import SearchBar from '~/components/SearchBar.vue'
 import Card from '~/components/card.vue'
 export default {
