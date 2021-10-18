@@ -26,7 +26,7 @@
       <hr class="my-3" />
       <v-row>
         <v-col align="left">
-          <em><small>&mdash; Nicolas Pedroso</small></em>
+          <em><small>&mdash; {{ person }}</small></em>
         </v-col>
         <v-col align="right">
           <v-btn class="ma-2" text icon @click="countUp">
@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  props: ['title', 'category', 'description','resultUp','resultDown','grade'],
+  props: ['title', 'category', 'description','resultUp','resultDown','grade','person'],
   data: function () {
     return {
       /*Likes*/

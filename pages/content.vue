@@ -33,6 +33,7 @@
             :resultDown="card.resultDown"
             :grade="card.grade"
             :description="card.description"
+            :person="card.person"
           />
           </div>
           <br />
