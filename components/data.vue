@@ -27,7 +27,7 @@
     </v-speed-dial>
     <v-dialog v-model="dialog" persistent max-width="600px">
       <v-card elevation="7">
-        <v-card-title class="headline"> Categoria - {{title}}</v-card-title>
+        <v-card-title class="headline"> Categoria - {{ title }}</v-card-title>
         <v-card-text>
           <v-row>
             <v-col align="center">
@@ -52,12 +52,15 @@
             </v-col>
             <v-col cols="9" align="center">
               <v-textarea
-                
                 color="teal"
                 label="Digite aqui"
                 dense
                 counter
-                :rules="[v => (v || '' ).length <= 300 || 'Descrição deve conter até 300 caracteres!']"
+                :rules="[
+                  (v) =>
+                    (v || '').length <= 300 ||
+                    'Descrição deve conter até 300 caracteres!',
+                ]"
               >
               </v-textarea>
             </v-col>
@@ -73,7 +76,7 @@
               <v-btn color="blue darken-1" text @click="dialog = false">
                 Fechar
               </v-btn>
-              <v-btn color="blue darken-1" text @click="dialog = false">
+              <v-btn color="blue darken-1" text @click="addCard">
                 Salvar
               </v-btn>
             </v-card-actions>
@@ -87,6 +90,7 @@
 <style></style>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Options',
   props: ['title'],
@@ -97,6 +101,14 @@ export default {
       mdiDislike: 'mdi-thumb-down-outline',
       mdiLike: 'mdi-thumb-up-outline',
       isSelected: true,
+      cardData: {
+        person: 'Person',
+        description: 'Novo filme',
+        grade: true,
+        resultUp: 0,
+        resultDown: 0,
+      },
+      articleId:'',
     }
   },
   methods: {
@@ -106,33 +118,32 @@ export default {
     modalCard() {
       this.dialog = true
     },
-    setLike() { 
+    setLike() {
       //arrumar BUG de clique nos 2
-      if(this.isSelected == true){
+      if (this.isSelected == true) {
         this.mdiLike = 'mdi-thumb-up'
         this.isSelected = false
-      }
-      else{
-        this.mdiLike = 'mdi-thumb-up-outline' 
+      } else {
+        this.mdiLike = 'mdi-thumb-up-outline'
         this.isSelected = true
-      }    
+      }
     },
     setDislike() {
-      if(this.isSelected == true){
+      if (this.isSelected == true) {
         this.mdiDislike = 'mdi-thumb-down'
         this.isSelected = false
-      }
-      else{
+      } else {
         this.mdiDislike = 'mdi-thumb-down-outline'
         this.isSelected = true
       }
     },
-      //TODO Enviar dados
-      async addCard() {
-      const article = { person: "Person", description: "novo filme", grade: "true"  };
-      const response = await axios.post("https://api.jsonbin.io/b/614151d19548541c29b230c3/7", article);
-      this.articleId = response.data.id;
-    }
-  }
+    //TODO Enviar dados
+    async addCard() {
+      const response = await axios.post(
+        'https://api.jsonbin.io/b/614151d19548541c29b230c3/7', this.cardData)
+      this.articleId = response.data
+      this.dialog = false
+    },
+  },
 }
 </script>

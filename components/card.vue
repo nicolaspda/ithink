@@ -1,5 +1,5 @@
 <template>
-  <v-card elevation="7" class="mb-5" >
+  <v-card elevation="7" class="mb-5">
     <v-card-title class="headline">
       <NuxtLink to="/inspire"> {{ category }} </NuxtLink>
       &nbsp; - &nbsp;
@@ -26,7 +26,9 @@
       <hr class="my-3" />
       <v-row>
         <v-col align="left">
-          <em><small>&mdash; {{ person }}</small></em>
+          <em
+            ><small>&mdash; {{ person }}</small></em
+          >
         </v-col>
         <v-col align="right">
           <v-btn class="ma-2" text icon @click="countUp">
@@ -45,7 +47,7 @@
 
 <script>
 export default {
-  props:{
+  props: {
     title: String,
     category: String,
     description: String,
@@ -61,7 +63,6 @@ export default {
       notActiveDown: true,
       mdiDown: 'mdi-thumb-down-outline',
       mdiUp: 'mdi-thumb-up-outline',
-
     }
   },
   methods: {

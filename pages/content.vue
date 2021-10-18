@@ -3,16 +3,16 @@
     <v-row justify="center" align="center">
       <v-col cols="12" sm="8" md="6">
         <v-app-bar color="#6A76AB" dark prominent extended absolute rounded>
-          <v-app-bar-title>{{title}}</v-app-bar-title>
+          <v-app-bar-title>{{ title }}</v-app-bar-title>
           <v-row>
             <v-col align="right">
-              <v-img
-                :src="img"
-                max-height="140"
-                max-width="100"
-              ></v-img>
+              <v-img :src="img" max-height="140" max-width="100"></v-img>
               <v-col>
-                <Slider v-for="card in filterCards" :key="card.name" :total="card.total" />
+                <Slider
+                  v-for="card in filterCards"
+                  :key="card.name"
+                  :total="card.total"
+                />
               </v-col>
             </v-col>
           </v-row>
@@ -24,17 +24,18 @@
           <div
             v-for="card in filterCards"
             :key="card.name"
-            :category="card.category">
-          <Card
-            v-for="(card, key) in card.comments" 
-            :key="key"
-            :title="title"
-            :resultUp="card.resultUp"
-            :resultDown="card.resultDown"
-            :grade="card.grade"
-            :description="card.description"
-            :person="card.person"
-          />
+            :category="card.category"
+          >
+            <Card
+              v-for="(card, key) in card.comments"
+              :key="key"
+              :title="title"
+              :resultUp="card.resultUp"
+              :resultDown="card.resultDown"
+              :grade="card.grade"
+              :description="card.description"
+              :person="card.person"
+            />
           </div>
           <br />
           <br />
@@ -60,7 +61,7 @@ export default {
   components: { slider, Card },
   data: function () {
     return {
-      title:'',
+      title: '',
       img: '',
       cards: [],
     }
@@ -75,16 +76,16 @@ export default {
     },
   },
   created: function () {
-    this.title = this.$nuxt._route.query.title;
-    this.img = this.$nuxt._route.query.img;
-    this.getCards();
+    this.title = this.$nuxt._route.query.title
+    this.img = this.$nuxt._route.query.img
+    this.getCards()
   },
-  computed:{
-    filterCards:function(){
-      return this.cards.filter((card) =>{
-        return card.name.match(this.title);
+  computed: {
+    filterCards: function () {
+      return this.cards.filter((card) => {
+        return card.name.match(this.title)
       })
-    }
-  }
+    },
+  },
 }
 </script>
