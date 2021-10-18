@@ -21,12 +21,20 @@
 
         <v-container>
           <!-- Aqui vão aparecer os cards -->
-          <Card
+          <div
             v-for="card in filterCards"
             :key="card.name"
-            :name="card.name"
-            :category="card.category"
+            :category="card.category">
+          <Card
+            v-for="(card, key) in card.comments" 
+            :key="key"
+            :title="title"
+            :resultUp="card.resultUp"
+            :resultDown="card.resultDown"
+            :grade="card.grade"
+            :description="card.description"
           />
+          </div>
           <br />
           <br />
         </v-container>
@@ -59,7 +67,7 @@ export default {
   methods: {
     getCards: function () {
       axios
-        .get('https://api.jsonbin.io/b/614151d19548541c29b230c3/4')
+        .get('https://api.jsonbin.io/b/614151d19548541c29b230c3/6')
         .then((response) => {
           this.cards = response.data
         })

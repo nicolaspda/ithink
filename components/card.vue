@@ -3,7 +3,7 @@
     <v-card-title class="headline">
       <NuxtLink to="/inspire"> {{ category }} </NuxtLink>
       &nbsp; - &nbsp;
-      <NuxtLink to="/content"> {{ name }} </NuxtLink>
+      <NuxtLink to="/content"> {{ title }} </NuxtLink>
     </v-card-title>
     <v-card-text>
       <v-row>
@@ -45,17 +45,15 @@
 
 <script>
 export default {
-  props: ['name', 'category', 'description'],
+  props: ['title', 'category', 'description','resultUp','resultDown','grade'],
   data: function () {
     return {
       /*Likes*/
-      resultUp: 0,
-      resultDown: 0,
       notActiveUp: true,
       notActiveDown: true,
       mdiDown: 'mdi-thumb-down-outline',
       mdiUp: 'mdi-thumb-up-outline',
-      grade: true,
+
     }
   },
   methods: {
