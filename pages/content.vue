@@ -68,7 +68,7 @@ export default {
   methods: {
     getCards: function () {
       axios
-        .get('https://api.jsonbin.io/b/614151d19548541c29b230c3/6')
+        .get('https://api.jsonbin.io/b/614151d19548541c29b230c3/7')
         .then((response) => {
           this.cards = response.data
         })

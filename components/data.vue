@@ -18,7 +18,7 @@
       <v-btn fab dark small color="green">
         <v-icon>mdi-pencil</v-icon>
       </v-btn>
-      <v-btn fab dark small color="indigo" @click.stop="addCard">
+      <v-btn fab dark small color="indigo" @click.stop="modalCard">
         <v-icon>mdi-plus</v-icon>
       </v-btn>
       <v-btn fab dark x-small color="primary" @click="toTop">
@@ -103,7 +103,7 @@ export default {
     toTop() {
       this.$vuetify.goTo(0)
     },
-    addCard() {
+    modalCard() {
       this.dialog = true
     },
     setLike() { 
@@ -127,6 +127,12 @@ export default {
         this.isSelected = true
       }
     },
+      //TODO Enviar dados
+      async addCard() {
+      const article = { person: "Person", description: "novo filme", grade: "true"  };
+      const response = await axios.post("https://api.jsonbin.io/b/614151d19548541c29b230c3/7", article);
+      this.articleId = response.data.id;
+    }
   }
 }
 </script>

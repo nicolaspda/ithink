@@ -45,7 +45,15 @@
 
 <script>
 export default {
-  props: ['title', 'category', 'description','resultUp','resultDown','grade','person'],
+  props:{
+    title: String,
+    category: String,
+    description: String,
+    resultUp: Number,
+    resultDown: Number,
+    grade: Boolean,
+    person: String,
+  },
   data: function () {
     return {
       /*Likes*/
