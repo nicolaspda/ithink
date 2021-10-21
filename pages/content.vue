@@ -2,7 +2,7 @@
   <div>
     <v-row justify="center" align="center">
       <v-col cols="12" sm="8" md="6">
-        <v-app-bar color="#6A76AB" dark prominent extended absolute rounded>
+        <v-app-bar color="#221E41" dark prominent extended absolute rounded elevation="15">
           <v-app-bar-title>{{ title }}</v-app-bar-title>
           <v-row>
             <v-col align="right">
@@ -26,6 +26,7 @@
             :key="card.name"
             :category="card.category"
           >
+          <transition-group name="component-fade" mode="out-in" appear>
             <Card
               v-for="(card, key) in card.comments"
               :key="key"
@@ -36,12 +37,13 @@
               :description="card.description"
               :person="card.person"
             />
+           </transition-group>
           </div>
           <br />
           <br />
         </v-container>
       </v-col>
-      <Data :title="title" />
+      <Data :title="title" :cardSample="filterCards" />
     </v-row>
   </div>
 </template>
@@ -50,6 +52,14 @@
 body {
   background-color: white;
 }
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+
+.component-fade-enter, .component-fade-leave-to {
+  opacity: 0;
+}
+
 </style>
 
 <script>

@@ -93,7 +93,7 @@
 import axios from 'axios'
 export default {
   name: 'Options',
-  props: ['title'],
+  props: {title:String, cardSample:Array},
   data: function () {
     return {
       fab: false,
@@ -139,9 +139,10 @@ export default {
     },
     //TODO Enviar dados
     async addCard() {
-      const response = await axios.post(
-        'https://api.jsonbin.io/b/614151d19548541c29b230c3/7', this.cardData)
-      this.articleId = response.data
+      this.cardSample[0].comments.push(this.cardData)
+      /*const response = await axios.post(
+        'https://api.npoint.io/8e4fc086e01e1082bced', this.cardData)
+      this.articleId = response.data*/
       this.dialog = false
     },
   },
