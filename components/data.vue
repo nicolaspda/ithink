@@ -140,7 +140,12 @@ export default {
     },
     //TODO Enviar dados
     async addCard() {
+      //TODO - Criar lógica caso seja a mesma passoa comentando
+      //TODO - Pegar todo o array de Cards, remover o title atual e depois subir ele
+
+      
       this.cardSample[0].comments.push(this.cardData)
+      
       const response = await axios.post(
         'https://api.npoint.io/8e4fc086e01e1082bced', this.cardSample)
       console.log(response.data)
