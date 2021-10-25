@@ -53,6 +53,7 @@
             <v-col cols="9" align="center">
               <v-textarea
                 color="teal"
+                v-model="cardData.description"
                 label="Digite aqui"
                 dense
                 counter
@@ -103,7 +104,7 @@ export default {
       isSelected: true,
       cardData: {
         person: 'Person',
-        description: 'Novo filme',
+        description: '',
         grade: true,
         resultUp: 0,
         resultDown: 0,
@@ -140,9 +141,9 @@ export default {
     //TODO Enviar dados
     async addCard() {
       this.cardSample[0].comments.push(this.cardData)
-      /*const response = await axios.post(
-        'https://api.npoint.io/8e4fc086e01e1082bced', this.cardData)
-      this.articleId = response.data*/
+      const response = await axios.post(
+        'https://api.npoint.io/8e4fc086e01e1082bced', this.cardSample)
+      console.log(response.data)
       this.dialog = false
     },
   },

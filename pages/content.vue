@@ -3,7 +3,7 @@
     <v-row justify="center" align="center">
       <v-col cols="12" sm="8" md="6">
         <v-app-bar color="#221E41" dark prominent extended absolute rounded elevation="15">
-          <v-app-bar-title>{{ title }}</v-app-bar-title>
+          <div>{{ title }}</div>
           <v-row>
             <v-col align="right">
               <v-img :src="img" max-height="140" max-width="100"></v-img>
