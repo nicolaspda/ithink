@@ -43,7 +43,7 @@
           <br />
         </v-container>
       </v-col>
-      <Data :title="title" :cardSample="filterCards" />
+      <Data :title="title" :cardSample="filterCards" :allCards="cards" />
     </v-row>
   </div>
 </template>
@@ -79,7 +79,7 @@ export default {
   methods: {
     getCards: function () {
       axios
-        .get('https://api.jsonbin.io/b/614151d19548541c29b230c3/7')
+        .get('https://api.npoint.io/8e4fc086e01e1082bced')
         .then((response) => {
           this.cards = response.data
         })

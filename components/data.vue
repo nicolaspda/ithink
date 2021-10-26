@@ -40,13 +40,25 @@
               <br />
               <br />
               <v-row justify="center">
-                <v-btn class="ma-2" text icon @click="setLike">
-                  <v-icon color="green lighten-2">{{ mdiLike }}</v-icon>
+                <v-btn v-if="setLike" class="ma-2" text icon @click="clickLike">
+                  <v-icon color="green lighten-2">mdi-thumb-up-outline</v-icon>
+                </v-btn>
+                <v-btn v-else class="ma-2" text icon @click="clickLike">
+                  <v-icon color="green lighten-2">mdi-thumb-up</v-icon>
                 </v-btn>
               </v-row>
               <v-row justify="center">
-                <v-btn class="ma-2" text icon @click="setDislike">
-                  <v-icon color="red lighten-2">{{ mdiDislike }}</v-icon>
+                <v-btn
+                  v-if="setDislike"
+                  class="ma-2"
+                  text
+                  icon
+                  @click="clickDislike"
+                >
+                  <v-icon color="red lighten-2">mdi-thumb-down-outline</v-icon>
+                </v-btn>
+                <v-btn v-else class="ma-2" text icon @click="clickDislike">
+                  <v-icon color="red lighten-2">mdi-thumb-down</v-icon>
                 </v-btn>
               </v-row>
             </v-col>
@@ -94,14 +106,13 @@
 import axios from 'axios'
 export default {
   name: 'Options',
-  props: {title:String, cardSample:Array},
+  props: { title: String, cardSample: Array, allCards: Array },
   data: function () {
     return {
       fab: false,
       dialog: false,
-      mdiDislike: 'mdi-thumb-down-outline',
-      mdiLike: 'mdi-thumb-up-outline',
-      isSelected: true,
+      setLike: true,
+      setDislike: true,
       cardData: {
         person: 'Person',
         description: '',
@@ -109,7 +120,7 @@ export default {
         resultUp: 0,
         resultDown: 0,
       },
-      articleId:'',
+      articleId: '',
     }
   },
   methods: {
@@ -119,35 +130,36 @@ export default {
     modalCard() {
       this.dialog = true
     },
-    setLike() {
-      //arrumar BUG de clique nos 2
-      if (this.isSelected == true) {
-        this.mdiLike = 'mdi-thumb-up'
-        this.isSelected = false
-      } else {
-        this.mdiLike = 'mdi-thumb-up-outline'
-        this.isSelected = true
+
+    clickLike() {
+      this.setLike = !this.setLike
+      if (this.setDislike === false) {
+        this.setDislike = true
       }
     },
-    setDislike() {
-      if (this.isSelected == true) {
-        this.mdiDislike = 'mdi-thumb-down'
-        this.isSelected = false
-      } else {
-        this.mdiDislike = 'mdi-thumb-down-outline'
-        this.isSelected = true
+    clickDislike() {
+      this.setDislike = !this.setDislike
+      if (this.setLike === false) {
+        this.setLike = true
       }
     },
+
     //TODO Enviar dados
     async addCard() {
       //TODO - Criar lógica caso seja a mesma passoa comentando
-      //TODO - Pegar todo o array de Cards, remover o title atual e depois subir ele
-
-      
+      // Pega todo o array de Cards, remove o title atual e depois sobe ele
+      this.allCards.forEach((card, index) => {
+        if (card.name == this.title) {
+          this.allCards.splice(index, 1)
+        }
+      })
       this.cardSample[0].comments.push(this.cardData)
-      
+      this.allCards.push(this.cardSample[0])
+
       const response = await axios.post(
-        'https://api.npoint.io/8e4fc086e01e1082bced', this.cardSample)
+        'https://api.npoint.io/8e4fc086e01e1082bced',
+        this.allCards
+      )
       console.log(response.data)
       this.dialog = false
     },
