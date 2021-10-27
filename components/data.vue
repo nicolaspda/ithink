@@ -130,38 +130,66 @@ export default {
     modalCard() {
       this.dialog = true
     },
+    switchGrade() {
+      if (this.setLike === false && this.setDislike === true) {
+        this.cardData.grade = this.setDislike
+      }
+      if (this.setDislike === false && this.setLike === true) {
+        this.cardData.grade = this.setDislike
+      }
+    },
 
     clickLike() {
       this.setLike = !this.setLike
       if (this.setDislike === false) {
         this.setDislike = true
       }
+      this.switchGrade()
     },
     clickDislike() {
       this.setDislike = !this.setDislike
       if (this.setLike === false) {
         this.setLike = true
       }
+      this.switchGrade()
     },
 
-    //TODO Enviar dados
+    //Envia dados
     async addCard() {
       //TODO - Criar lógica caso seja a mesma passoa comentando
-      // Pega todo o array de Cards, remove o title atual e depois sobe ele
+      //Pega todo o array de Cards, remove o title atual e depois sobe ele
       this.allCards.forEach((card, index) => {
         if (card.name == this.title) {
           this.allCards.splice(index, 1)
         }
       })
-      this.cardSample[0].comments.push(this.cardData)
-      this.allCards.push(this.cardSample[0])
 
-      const response = await axios.post(
-        'https://api.npoint.io/8e4fc086e01e1082bced',
-        this.allCards
-      )
-      console.log(response.data)
-      this.dialog = false
+      try {
+        this.cardSample[0].comments.push(this.cardData)
+        this.allCards.push(this.cardSample[0])
+
+        const response = await axios.post(
+          'https://api.npoint.io/8e4fc086e01e1082bced',
+          this.allCards
+        )
+        console.log(response.data)
+        this.dialog = false
+      } catch (e) {
+        const firstCard = {
+          category: '',
+          comments: [this.cardData],
+          name: this.title,
+          total: 0,
+        }
+        this.allCards.push(firstCard)
+        console.log('FirstCard')
+        const response = await axios.post(
+          'https://api.npoint.io/8e4fc086e01e1082bced',
+          this.allCards
+        )
+        console.log(response.data)
+        this.dialog = false
+      }
     },
   },
 }

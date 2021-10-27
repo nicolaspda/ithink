@@ -31,7 +31,7 @@ export default {
     gettitulo: function () {
       axios
         .get(
-          'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f7388385-522e-4b1e-b33c-8d27b1c73ddd/movies.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211025%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211025T035517Z&X-Amz-Expires=86400&X-Amz-Signature=6323c88a5b218a82f113d73960a37f8e32bb1485caa3992c68c92e137a227614&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22movies.json%22'
+          'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f7388385-522e-4b1e-b33c-8d27b1c73ddd/movies.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211027%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211027T043202Z&X-Amz-Expires=86400&X-Amz-Signature=46967e6b2a8573b1f05e31c6bf0d5d85923ae69d419665b0a29377ce4b979f11&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22movies.json%22'
         )
         .then((response) => {
           this.titulos = response.data
