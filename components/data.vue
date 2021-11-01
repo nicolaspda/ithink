@@ -116,7 +116,7 @@ export default {
       cardData: {
         person: 'Person',
         description: '',
-        grade: true,
+        grade: null,
         resultUp: 0,
         resultDown: 0,
       },
@@ -156,39 +156,45 @@ export default {
 
     //Envia dados
     async addCard() {
-      //TODO - Criar lógica caso seja a mesma passoa comentando
+      //TODO - Criar lógica caso seja a mesma pessoa comentando
+
       //Pega todo o array de Cards, remove o title atual e depois sobe ele
-      this.allCards.forEach((card, index) => {
-        if (card.name == this.title) {
-          this.allCards.splice(index, 1)
-        }
-      })
+      if (this.setDislike === true && this.setLike === true) {
+        this.cardData.grade = null
+        alert('Defina seu voto!')
+      } else {
+        this.allCards.forEach((card, index) => {
+          if (card.name == this.title) {
+            this.allCards.splice(index, 1)
+          }
+        })
 
-      try {
-        this.cardSample[0].comments.push(this.cardData)
-        this.allCards.push(this.cardSample[0])
+        try {
+          this.cardSample[0].comments.push(this.cardData)
+          this.allCards.push(this.cardSample[0])
 
-        const response = await axios.post(
-          'https://api.npoint.io/8e4fc086e01e1082bced',
-          this.allCards
-        )
-        console.log(response.data)
-        this.dialog = false
-      } catch (e) {
-        const firstCard = {
-          category: '',
-          comments: [this.cardData],
-          name: this.title,
-          total: 0,
+          const response = await axios.post(
+            'https://api.npoint.io/8e4fc086e01e1082bced',
+            this.allCards
+          )
+          console.log(response.data)
+          this.dialog = false
+        } catch (e) {
+          const firstCard = {
+            category: '',
+            comments: [this.cardData],
+            name: this.title,
+            total: 0,
+          }
+          this.allCards.push(firstCard)
+          console.log('FirstCard')
+          const response = await axios.post(
+            'https://api.npoint.io/8e4fc086e01e1082bced',
+            this.allCards
+          )
+          console.log(response.data)
+          this.dialog = false
         }
-        this.allCards.push(firstCard)
-        console.log('FirstCard')
-        const response = await axios.post(
-          'https://api.npoint.io/8e4fc086e01e1082bced',
-          this.allCards
-        )
-        console.log(response.data)
-        this.dialog = false
       }
     },
   },
