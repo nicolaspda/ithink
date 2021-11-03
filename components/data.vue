@@ -26,6 +26,15 @@
       </v-btn>
     </v-speed-dial>
     <v-dialog v-model="dialog" persistent max-width="600px">
+      <v-alert
+        color="red"
+        dismissible
+        elevation="10"
+        type="error"
+        v-model="alertError"
+        transition="scale-transition"     
+      >Defina seu voto!
+      </v-alert>
       <v-card elevation="7">
         <v-card-title class="headline"> Categoria - {{ title }}</v-card-title>
         <v-card-text>
@@ -110,6 +119,7 @@ export default {
   data: function () {
     return {
       fab: false,
+      alertError: false,
       dialog: false,
       setLike: true,
       setDislike: true,
@@ -161,7 +171,10 @@ export default {
       //Pega todo o array de Cards, remove o title atual e depois sobe ele
       if (this.setDislike === true && this.setLike === true) {
         this.cardData.grade = null
-        alert('Defina seu voto!')
+        this.alertError = true
+        setTimeout(() => {
+          this.alertError = false
+        }, 3000);
       } else {
         this.allCards.forEach((card, index) => {
           if (card.name == this.title) {

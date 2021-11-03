@@ -31,12 +31,26 @@
           >
         </v-col>
         <v-col align="right">
-          <v-btn class="ma-2" text icon @click="countUp">
-            <v-icon color="green lighten-2">{{ mdiUp }}</v-icon>
+          <v-btn v-if="likeTrigger" class="ma-2" text icon @click="countUp">
+            <v-icon color="green lighten-2">mdi-thumb-up-outline</v-icon>
             {{ resultUp }}
           </v-btn>
-          <v-btn class="ma-2" text icon @click="countDown">
-            <v-icon color="red lighten-2">{{ mdiDown }}</v-icon>
+          <v-btn v-else class="ma-2" text icon @click="countUp">
+            <v-icon color="green lighten-2">mdi-thumb-up</v-icon>
+            {{ resultUp }}
+          </v-btn>
+          <v-btn
+            v-if="dislikeTrigger"
+            class="ma-2"
+            text
+            icon
+            @click="countDown"
+          >
+            <v-icon color="red lighten-2">mdi-thumb-down-outline</v-icon>
+            {{ resultDown }}
+          </v-btn>
+          <v-btn v-else class="ma-2" text icon @click="countDown">
+            <v-icon color="red lighten-2">mdi-thumb-down</v-icon>
             {{ resultDown }}
           </v-btn>
         </v-col>
@@ -59,34 +73,34 @@ export default {
   data: function () {
     return {
       /*Likes*/
-      notActiveUp: true,
-      notActiveDown: true,
-      mdiDown: 'mdi-thumb-down-outline',
-      mdiUp: 'mdi-thumb-up-outline',
+      likeTrigger: true,
+      dislikeTrigger: true,
     }
   },
   methods: {
     countUp() {
-      //arrumar BUG de clique nos 2
-      if (this.notActiveUp == true) {
+      this.likeTrigger = !this.likeTrigger
+      if (this.dislikeTrigger === false) {
+        this.dislikeTrigger = true
+        this.resultDown -= 1
+      }
+      if (this.likeTrigger === false) {
         this.resultUp += 1
-        this.mdiUp = 'mdi-thumb-up'
-        this.notActiveUp = false
       } else {
         this.resultUp -= 1
-        this.mdiUp = 'mdi-thumb-up-outline'
-        this.notActiveUp = true
       }
     },
+
     countDown() {
-      if (this.notActiveDown == true) {
+      this.dislikeTrigger = !this.dislikeTrigger
+      if (this.likeTrigger === false) {
+        this.likeTrigger = true
+        this.resultUp -= 1
+      }
+      if (this.dislikeTrigger === false) {
         this.resultDown += 1
-        this.mdiDown = 'mdi-thumb-down'
-        this.notActiveDown = false
       } else {
         this.resultDown -= 1
-        this.mdiDown = 'mdi-thumb-down-outline'
-        this.notActiveDown = true
       }
     },
   },
