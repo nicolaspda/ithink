@@ -79,7 +79,7 @@ export default {
   methods: {
     getCards: function () {
       axios
-        .get('https://api.npoint.io/8e4fc086e01e1082bced')
+        .get('https://api.npoint.io/62237f9c648e7e1cd160')
         .then((response) => {
           this.cards = response.data
         })

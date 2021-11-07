@@ -32,8 +32,8 @@
         elevation="10"
         type="error"
         v-model="alertError"
-        transition="scale-transition"     
-      >Defina seu voto!
+        transition="scale-transition"
+        >Defina seu voto!
       </v-alert>
       <v-card elevation="7">
         <v-card-title class="headline"> Categoria - {{ title }}</v-card-title>
@@ -174,7 +174,7 @@ export default {
         this.alertError = true
         setTimeout(() => {
           this.alertError = false
-        }, 3000);
+        }, 3000)
       } else {
         this.allCards.forEach((card, index) => {
           if (card.name == this.title) {
@@ -183,15 +183,32 @@ export default {
         })
 
         try {
+          //Coleta todos os likes atuais e o novo caso seja selecionado
+          var totalLikes = 0
+          this.cardSample[0].comments.forEach((comments, index) => {
+            if (comments.grade == true) {
+              totalLikes++
+            }
+          })
+          if (this.cardData.grade === true) {
+            totalLikes++
+          }
+
+          //Lógica que altera a porcentagem de likes vs dislikes no Slider
+          const totArray = this.cardSample[0].comments.length + 1
+          this.cardSample[0].total = (totalLikes / totArray) * 100
+
+          //Adiciona os dados digitados e faz o Post
           this.cardSample[0].comments.push(this.cardData)
           this.allCards.push(this.cardSample[0])
 
           const response = await axios.post(
-            'https://api.npoint.io/8e4fc086e01e1082bced',
+            'https://api.npoint.io/62237f9c648e7e1cd160',
             this.allCards
           )
           console.log(response.data)
           this.dialog = false
+          //Adiciona os dados caso seja o primeiro Card do assunto
         } catch (e) {
           const firstCard = {
             category: '',
@@ -202,7 +219,7 @@ export default {
           this.allCards.push(firstCard)
           console.log('FirstCard')
           const response = await axios.post(
-            'https://api.npoint.io/8e4fc086e01e1082bced',
+            'https://api.npoint.io/62237f9c648e7e1cd160',
             this.allCards
           )
           console.log(response.data)
