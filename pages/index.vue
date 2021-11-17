@@ -3,7 +3,7 @@
     <v-col cols="12" sm="8" md="6">
       <iThinkLogo class="animate__animated animate__bounce" />
       <br />
-      <div id="buttonDiv"></div>
+      <div ref="google"></div>
       <SearchBar />
       <v-row justify="center" align="center">
         <v-icon color="green accent-2" x-large>mdi-trending-up</v-icon>
@@ -22,6 +22,12 @@ import Card from '~/components/card.vue'
 import jwt_decode from 'jwt-decode'
 export default {
   components: { SearchBar, Card },
+  data: function () {
+    return {
+      google: { theme: 'outline', size: 'large' },
+    }
+  },
+
   methods: {
     handleCredentialResponse: function (response) {
       // decodeJwtResponse() is a custom function defined by you
@@ -37,6 +43,7 @@ export default {
       console.log('Email: ' + responsePayload.email)
     },
   },
+  //CHAMA O BOTÃO DE SIGN IN
   mounted: function () {
     google.accounts.id.initialize({
       client_id:
@@ -44,8 +51,9 @@ export default {
       callback: this.handleCredentialResponse,
     })
     google.accounts.id.renderButton(
-      document.getElementById('buttonDiv'),
-      { theme: 'outline', size: 'large' } // customization attributes
+      this.$refs['google'],
+      this.google
+      //ATRIBUTOS CUSTOMIZAVEIS DO DATA
     )
   },
 }
