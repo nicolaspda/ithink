@@ -3,10 +3,12 @@
     <v-autocomplete
       id="autocomplete"
       clearable
+      :loading="isLoading"
       rounded
       dense
       solo
-      label="Pesquise ou digite a categoria"
+      hide-no-data
+      label="Pesquise aqui"
       :items="titulos"
       item-text="name"
       item-value="item-disabled"
@@ -38,6 +40,7 @@ export default {
     return {
       titulos: [],
       search: '',
+      isLoading: false,
     }
   },
   methods: {
@@ -54,8 +57,14 @@ export default {
     go: function () {
       console.log('foi')
       this.search = document.getElementById('autocomplete').value
-      //usar alguma função que realize delay pra fazer a chamada
-      this.gettitulo()
+      //Usa uma função que realiza delay pra fazer a chamada
+      //Avaliar melhoria no futuro para fazer 1 request apenas
+      this.isLoading = true
+      var self = this
+      setTimeout(function () {
+        self.gettitulo()
+        self.isLoading = false
+      }, 2000)
     },
   },
 }
