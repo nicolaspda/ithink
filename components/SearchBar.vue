@@ -1,19 +1,31 @@
 <template>
   <div>
     <v-autocomplete
+      id="autocomplete"
       clearable
       rounded
       dense
       solo
       label="Pesquise ou digite a categoria"
       :items="titulos"
-      item-text="title"
+      item-text="name"
       item-value="item-disabled"
-      @change="go"
+      return-object
+      @keyup="go"
     >
-    <template v-slot:item="{ item }">
-        <v-list-item link :to="{ path: 'content/', query: { title: item.title, img:item.poster }}">{{item.title}}</v-list-item>
-    </template>
+      <template v-slot:item="{ item }">
+        <v-list-item
+          link
+          :to="{
+            path: 'content/',
+            query: {
+              title: item.name || item.title,
+              img: 'https://image.tmdb.org/t/p/w500/' + item.profile_path,
+            },
+          }"
+          >{{ item.name }}{{ item.title }}</v-list-item
+        >
+      </template>
     </v-autocomplete>
   </div>
 </template>
@@ -25,25 +37,26 @@ export default {
   data: function () {
     return {
       titulos: [],
+      search: '',
     }
   },
   methods: {
     gettitulo: function () {
       axios
         .get(
-          'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f7388385-522e-4b1e-b33c-8d27b1c73ddd/movies.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211116%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211116T232632Z&X-Amz-Expires=86400&X-Amz-Signature=7a7859a6af5690268f1e0201920d0c046e7494002bbb37067ae34dd14cb4d5b8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22movies.json%22&x-id=GetObject'
+          'https://api.themoviedb.org/3/search/multi?api_key=36fa7134e42de3076a18d9b0d61ee173&language=pt-BR&include_adult=false&query=' +
+            this.search
         )
         .then((response) => {
-          this.titulos = response.data
+          this.titulos = response.data.results
         })
     },
     go: function () {
       console.log('foi')
-
+      this.search = document.getElementById('autocomplete').value
+      //usar alguma função que realize delay pra fazer a chamada
+      this.gettitulo()
     },
-  },
-  created: function () {
-    this.gettitulo()
   },
 }
 </script>
