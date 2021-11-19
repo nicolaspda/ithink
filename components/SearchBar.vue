@@ -12,7 +12,6 @@
       :items="titulos"
       item-text="name"
       item-value="item-disabled"
-      return-object
       @keyup="go"
     >
       <template v-slot:item="{ item }">
@@ -22,7 +21,7 @@
             path: 'content/',
             query: {
               title: item.name || item.title,
-              img: 'https://image.tmdb.org/t/p/w500/' + item.profile_path,
+              img: item.profile_path===undefined ? 'https://image.tmdb.org/t/p/w500/' + item.poster_path : 'https://image.tmdb.org/t/p/w500/' + item.profile_path,
             },
           }"
           >{{ item.name }}{{ item.title }}</v-list-item
