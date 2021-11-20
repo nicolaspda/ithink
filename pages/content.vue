@@ -2,7 +2,15 @@
   <div>
     <v-row justify="center" align="center">
       <v-col cols="12" sm="8" md="6">
-        <v-app-bar color="#221E41" dark prominent extended absolute rounded elevation="15">
+        <v-app-bar
+          color="#221E41"
+          dark
+          prominent
+          extended
+          absolute
+          rounded
+          elevation="15"
+        >
           <div>{{ title }}</div>
           <v-row>
             <v-col align="right">
@@ -21,23 +29,33 @@
 
         <v-container>
           <!-- Aqui vão aparecer os cards -->
+          <v-banner
+            dark
+            rounded
+            v-if="noCards"
+            align="center"
+            icon="mdi-account-voice"
+          >
+            Ainda não há opiniões cadastradas para este título. <br />
+            Seja o primeiro a adicionar!
+          </v-banner>
           <div
             v-for="card in filterCards"
             :key="card.name"
             :category="card.category"
           >
-          <transition-group name="component-fade" mode="out-in" appear>
-            <Card
-              v-for="(card, key) in card.comments"
-              :key="key"
-              :title="title"
-              :resultUp="card.resultUp"
-              :resultDown="card.resultDown"
-              :grade="card.grade"
-              :description="card.description"
-              :person="card.person"
-            />
-           </transition-group>
+            <transition-group name="component-fade" mode="out-in" appear>
+              <Card
+                v-for="(card, key) in card.comments"
+                :key="key"
+                :title="title"
+                :resultUp="card.resultUp"
+                :resultDown="card.resultDown"
+                :grade="card.grade"
+                :description="card.description"
+                :person="card.person"
+              />
+            </transition-group>
           </div>
           <br />
           <br />
@@ -52,14 +70,15 @@
 body {
   background-color: white;
 }
-.component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity .3s ease;
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.3s ease;
 }
 
-.component-fade-enter, .component-fade-leave-to {
+.component-fade-enter,
+.component-fade-leave-to {
   opacity: 0;
 }
-
 </style>
 
 <script>
@@ -74,6 +93,7 @@ export default {
       title: '',
       img: '',
       cards: [],
+      noCards: false,
     }
   },
   methods: {
@@ -95,6 +115,15 @@ export default {
       return this.cards.filter((card) => {
         return card.name.match(this.title)
       })
+    },
+  },
+  watch: {
+    filterCards: function (val) {
+      if (val.length == 0) {
+        this.noCards = true
+      } else {
+        this.noCards = false
+      }
     },
   },
 }
