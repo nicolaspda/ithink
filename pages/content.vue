@@ -87,6 +87,7 @@ import slider from '~/components/slider.vue'
 import axios from 'axios'
 
 export default {
+  middleware:['auth'],
   components: { slider, Card },
   data: function () {
     return {

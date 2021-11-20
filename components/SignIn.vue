@@ -27,6 +27,7 @@ export default {
       console.log('Family Name: ' + responsePayload.family_name)
       console.log('Image URL: ' + responsePayload.picture)
       console.log('Email: ' + responsePayload.email)
+      this.$store.commit('alterLogin')
     },
   },
   //CHAMA O BOTÃO DE SIGN IN
