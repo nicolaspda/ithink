@@ -3,7 +3,6 @@
     <v-col cols="12" sm="8" md="6">
       <iThinkLogo class="animate__animated animate__bounce" />
       <br />
-      <SignIn />
       <SearchBar />
       <v-row justify="center" align="center">
         <v-icon color="green accent-2" x-large>mdi-trending-up</v-icon>
@@ -20,6 +19,7 @@
 import SearchBar from '~/components/SearchBar.vue'
 import Card from '~/components/card.vue'
 export default {
+  middleware:['auth'],
   components: { SearchBar, Card },
 }
 </script>

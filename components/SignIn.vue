@@ -28,6 +28,7 @@ export default {
       console.log('Image URL: ' + responsePayload.picture)
       console.log('Email: ' + responsePayload.email)
       this.$store.commit('alterLogin')
+      this.$router.push('/')
     },
   },
   //CHAMA O BOTÃO DE SIGN IN
