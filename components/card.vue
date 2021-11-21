@@ -9,7 +9,7 @@
       <v-row>
         <v-col align="center">
           <v-avatar>
-            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="MyPhoto" />
+            <img :src="picture" alt="MyPhoto" />
           </v-avatar>
           <br /><br /><br />
 
@@ -69,6 +69,7 @@ export default {
     resultDown: Number,
     grade: Boolean,
     person: String,
+    picture: String
   },
   data: function () {
     return {

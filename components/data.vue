@@ -42,7 +42,7 @@
             <v-col align="center">
               <v-avatar>
                 <img
-                  src="https://cdn.vuetifyjs.com/images/john.jpg"
+                  :src="this.$store.state.picture"
                   alt="MyPhoto"
                 />
               </v-avatar>
@@ -124,7 +124,8 @@ export default {
       setLike: true,
       setDislike: true,
       cardData: {
-        person: 'Person',
+        person: this.$store.state.name,
+        picture: this.$store.state.picture,
         description: '',
         grade: null,
         resultUp: 0,

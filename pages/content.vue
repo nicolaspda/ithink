@@ -54,6 +54,7 @@
                 :grade="card.grade"
                 :description="card.description"
                 :person="card.person"
+                :picture="card.picture"
               />
             </transition-group>
           </div>

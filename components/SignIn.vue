@@ -22,11 +22,6 @@ export default {
       const responsePayload = jwt_decode(response.credential)
 
       console.log('ID: ' + responsePayload.sub)
-      console.log('Full Name: ' + responsePayload.name)
-      console.log('Given Name: ' + responsePayload.given_name)
-      console.log('Family Name: ' + responsePayload.family_name)
-      console.log('Image URL: ' + responsePayload.picture)
-      console.log('Email: ' + responsePayload.email)
       this.$store.commit('SET_VARS', responsePayload)
       this.$store.commit('alterLogin')
       this.$router.push('/')
