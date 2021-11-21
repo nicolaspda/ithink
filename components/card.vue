@@ -9,7 +9,7 @@
       <v-row>
         <v-col align="center">
           <v-avatar>
-            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="MyPhoto" />
           </v-avatar>
           <br /><br /><br />
 

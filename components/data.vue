@@ -43,7 +43,7 @@
               <v-avatar>
                 <img
                   src="https://cdn.vuetifyjs.com/images/john.jpg"
-                  alt="John"
+                  alt="MyPhoto"
                 />
               </v-avatar>
               <br />
@@ -91,7 +91,7 @@
           <hr class="my-3" />
           <v-row>
             <v-col align="left">
-              <em><small>&mdash; Nicolas Pedroso</small></em>
+              <em><small>&mdash; {{ $store.state.name }}</small></em>
             </v-col>
             <v-card-actions>
               <v-spacer></v-spacer>
