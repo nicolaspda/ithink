@@ -214,7 +214,7 @@ export default {
             category: '',
             comments: [this.cardData],
             name: this.title,
-            total: 0,
+            total: this.cardData.grade === true ? 100 : 0,
           }
           this.allCards.push(firstCard)
           console.log('FirstCard')
