@@ -36,7 +36,7 @@
         >Defina seu voto!
       </v-alert>
       <v-card elevation="7">
-        <v-card-title class="headline"> Categoria - {{ title }}</v-card-title>
+        <v-card-title class="headline"> {{ category }} - {{ title }}</v-card-title>
         <v-card-text>
           <v-row>
             <v-col align="center">
@@ -115,7 +115,7 @@
 import axios from 'axios'
 export default {
   name: 'Options',
-  props: { title: String, cardSample: Array, allCards: Array },
+  props: { title: String, category: String, cardSample: Array, allCards: Array },
   data: function () {
     return {
       fab: false,
@@ -131,7 +131,6 @@ export default {
         resultUp: 0,
         resultDown: 0,
       },
-      articleId: '',
     }
   },
   methods: {
@@ -167,16 +166,20 @@ export default {
 
     //Envia dados
     async addCard() {
-      //TODO - Criar lógica caso seja a mesma pessoa comentando
-
+      
       //Pega todo o array de Cards, remove o title atual e depois sobe ele
+      //Testa se o card tem o voto definido
+
       if (this.setDislike === true && this.setLike === true) {
         this.cardData.grade = null
         this.alertError = true
         setTimeout(() => {
           this.alertError = false
         }, 3000)
-      } else {
+      }
+      //TODO - Criar lógica caso seja a mesma pessoa comentando
+  
+      else {
         this.allCards.forEach((card, index) => {
           if (card.name == this.title) {
             this.allCards.splice(index, 1)

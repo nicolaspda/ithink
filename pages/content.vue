@@ -42,7 +42,6 @@
           <div
             v-for="card in filterCards"
             :key="card.name"
-            :category="card.category"
           >
             <transition-group name="component-fade" mode="out-in" appear>
               <Card
@@ -54,7 +53,8 @@
                 :grade="card.grade"
                 :description="card.description"
                 :person="card.person"
-                :picture="card.picture"
+                :picture="card.picture"   
+                :category="category"
               />
             </transition-group>
           </div>
@@ -62,7 +62,7 @@
           <br />
         </v-container>
       </v-col>
-      <Data :title="title" :cardSample="filterCards" :allCards="cards" />
+      <Data :title="title" :category="category" :cardSample="filterCards" :allCards="cards" />
     </v-row>
   </div>
 </template>
@@ -94,6 +94,7 @@ export default {
     return {
       title: '',
       img: '',
+      category: '',
       cards: [],
       noCards: false,
     }
@@ -110,6 +111,7 @@ export default {
   created: function () {
     this.title = this.$nuxt._route.query.title
     this.img = this.$nuxt._route.query.img
+    this.category = this.$nuxt._route.query.category
     this.getCards()
   },
   computed: {

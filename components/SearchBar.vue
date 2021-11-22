@@ -22,6 +22,7 @@
             query: {
               title: item.name || item.title,
               img: item.profile_path===undefined ? 'https://image.tmdb.org/t/p/w500/' + item.poster_path : 'https://image.tmdb.org/t/p/w500/' + item.profile_path,
+              category: item.media_type,
             },
           }"
           >{{ item.name }}{{ item.title }}</v-list-item

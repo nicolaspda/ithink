@@ -16,7 +16,7 @@ export default {
 
   methods: {
     handleCredentialResponse: function (response) {
-      // decodeJwtResponse() is a custom function defined by you
+      // decodeJwtResponse() is a custom function defined
       // to decode the credential response.
 
       const responsePayload = jwt_decode(response.credential)
