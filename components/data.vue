@@ -150,7 +150,7 @@ export default {
         this.cardSample[0].comments.forEach((comments, index) => {
           if (comments.person == this.$store.state.name) {
             console.log('Nope!')
-            //"ALERT ATTENTION" Você já declarou um voto neste título!
+            //"ALERT ATTENTION" Você já declarou um voto para este título!
             //Deseja alterar sua opinião?
           }
         })
@@ -192,7 +192,6 @@ export default {
           this.alertError = false
         }, 3000)
       }
-      //TODO - Criar lógica caso seja a mesma pessoa comentando
       else {
         this.allCards.forEach((card, index) => {
           if (card.name == this.title) {
