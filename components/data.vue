@@ -36,15 +36,14 @@
         >Defina seu voto!
       </v-alert>
       <v-card elevation="7">
-        <v-card-title class="headline"> {{ category }} - {{ title }}</v-card-title>
+        <v-card-title class="headline">
+          {{ category }} - {{ title }}</v-card-title
+        >
         <v-card-text>
           <v-row>
             <v-col align="center">
               <v-avatar>
-                <img
-                  :src="this.$store.state.picture"
-                  alt="MyPhoto"
-                />
+                <img :src="this.$store.state.picture" alt="MyPhoto" />
               </v-avatar>
               <br />
               <br />
@@ -91,7 +90,9 @@
           <hr class="my-3" />
           <v-row>
             <v-col align="left">
-              <em><small>&mdash; {{ $store.state.name }}</small></em>
+              <em
+                ><small>&mdash; {{ $store.state.name }}</small></em
+              >
             </v-col>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -115,7 +116,12 @@
 import axios from 'axios'
 export default {
   name: 'Options',
-  props: { title: String, category: String, cardSample: Array, allCards: Array },
+  props: {
+    title: String,
+    category: String,
+    cardSample: Array,
+    allCards: Array,
+  },
   data: function () {
     return {
       fab: false,
@@ -138,7 +144,17 @@ export default {
       this.$vuetify.goTo(0)
     },
     modalCard() {
-      this.dialog = true
+      if (this.cardSample[0] === undefined) {
+        this.dialog = true
+      } else {
+        this.cardSample[0].comments.forEach((comments, index) => {
+          if (comments.person == this.$store.state.name) {
+            console.log('Nope!')
+            //"ALERT ATTENTION" Você já declarou um voto neste título!
+            //Deseja alterar sua opinião?
+          }
+        })
+      }
     },
     switchGrade() {
       if (this.setLike === false && this.setDislike === true) {
@@ -166,7 +182,6 @@ export default {
 
     //Envia dados
     async addCard() {
-      
       //Pega todo o array de Cards, remove o title atual e depois sobe ele
       //Testa se o card tem o voto definido
 
@@ -178,7 +193,6 @@ export default {
         }, 3000)
       }
       //TODO - Criar lógica caso seja a mesma pessoa comentando
-  
       else {
         this.allCards.forEach((card, index) => {
           if (card.name == this.title) {
@@ -215,7 +229,7 @@ export default {
           //Adiciona os dados caso seja o primeiro Card do assunto
         } catch (e) {
           const firstCard = {
-            category: '',
+            category: this.category,
             comments: [this.cardData],
             name: this.title,
             total: this.cardData.grade === true ? 100 : 0,
