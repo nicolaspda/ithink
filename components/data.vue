@@ -177,11 +177,11 @@ export default {
       if (this.cardSample[0] === undefined) {
         this.dialog = true
       } else {
+        this.dialog = true
         this.cardSample[0].comments.forEach((comments, index) => {
           if (comments.person == this.$store.state.name) {
             console.log('Nope!')
             this.alertDanger = true
-            this.dialog = true
           }
         })
       }
