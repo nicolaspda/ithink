@@ -35,7 +35,29 @@
         transition="scale-transition"
         >Defina seu voto!
       </v-alert>
-      <v-card elevation="7">
+      <v-alert
+        elevation="10"
+        type="warning"
+        dark
+        v-model="alertDanger"
+        icon="mdi-alert"
+        transition="scale-transition"
+      >
+        <v-row align="center">
+          <v-col class="grow">
+            Você já declarou um voto para este título!
+          </v-col>
+          <v-col class="shrink">
+            <v-btn color="black darken-1" @click="editComment">Alterar</v-btn>
+          </v-col>
+          <v-col class="shrink">
+            <v-btn color="black darken-1" @click="dialog = false"
+              >Cancelar</v-btn
+            >
+          </v-col>
+        </v-row>
+      </v-alert>
+      <v-card elevation="7" :disabled="alertDanger">
         <v-card-title class="headline">
           {{ category }} - {{ title }}</v-card-title
         >
@@ -126,6 +148,7 @@ export default {
     return {
       fab: false,
       alertError: false,
+      alertDanger: false,
       dialog: false,
       setLike: true,
       setDislike: true,
@@ -143,6 +166,14 @@ export default {
     toTop() {
       this.$vuetify.goTo(0)
     },
+    editComment() {
+      this.alertDanger = false
+      this.cardSample[0].comments.forEach((comments, index) => {
+        if (comments.person == this.$store.state.name) {
+          this.cardSample[0].comments.splice(index, 1)
+        }
+      })
+    },
     modalCard() {
       if (this.cardSample[0] === undefined) {
         this.dialog = true
@@ -150,8 +181,8 @@ export default {
         this.cardSample[0].comments.forEach((comments, index) => {
           if (comments.person == this.$store.state.name) {
             console.log('Nope!')
-            //"ALERT ATTENTION" Você já declarou um voto para este título!
-            //Deseja alterar sua opinião?
+            this.alertDanger = true
+            this.dialog = true
           }
         })
       }
@@ -191,8 +222,7 @@ export default {
         setTimeout(() => {
           this.alertError = false
         }, 3000)
-      }
-      else {
+      } else {
         this.allCards.forEach((card, index) => {
           if (card.name == this.title) {
             this.allCards.splice(index, 1)
