@@ -48,9 +48,9 @@
             Você já declarou um voto para este título!
           </v-col>
           <v-col class="shrink">
-            <v-btn color="black darken-1" @click="editComment">Alterar
+            <v-btn small color="black darken-1" @click="editComment">Alterar
             </v-btn><br><br>
-            <v-btn color="black darken-1" @click="dialog = false"
+            <v-btn small color="black darken-1" @click="dialog = false"
               >Cancelar
             </v-btn>
           </v-col>
