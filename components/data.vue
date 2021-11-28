@@ -12,7 +12,7 @@
       <template v-slot:activator>
         <v-btn v-model="fab" color="#263238" dark fab>
           <v-icon v-if="fab">mdi-close</v-icon>
-          <v-icon v-else>mdi-account-circle</v-icon>
+          <v-icon v-else>mdi-message-text</v-icon>
         </v-btn>
       </template>
       <v-btn fab dark small color="green">
@@ -48,12 +48,11 @@
             Você já declarou um voto para este título!
           </v-col>
           <v-col class="shrink">
-            <v-btn color="black darken-1" @click="editComment">Alterar</v-btn>
-          </v-col>
-          <v-col class="shrink">
+            <v-btn color="black darken-1" @click="editComment">Alterar
+            </v-btn><br><br>
             <v-btn color="black darken-1" @click="dialog = false"
-              >Cancelar</v-btn
-            >
+              >Cancelar
+            </v-btn>
           </v-col>
         </v-row>
       </v-alert>
