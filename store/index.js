@@ -10,7 +10,7 @@ export const state = () => {
 //Define as mutações
 export const mutations = {
     alterLogin(state) {
-      state.authenticated = true
+      state.authenticated = window.localStorage.getItem('authenticated')
     },
     SET_VARS (state, value) {
       state.name = value.name

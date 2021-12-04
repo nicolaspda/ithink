@@ -22,6 +22,7 @@ export default {
       const responsePayload = jwt_decode(response.credential)
 
       console.log('ID: ' + responsePayload.sub)
+      window.localStorage.setItem("authenticated","true")
       this.$store.commit('SET_VARS', responsePayload)
       this.$store.commit('alterLogin')
       this.$router.push('/')
