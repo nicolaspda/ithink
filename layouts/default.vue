@@ -15,6 +15,7 @@
 import 'animate.css'
  export default {
   name: "default",
+
 }
 </script>
 

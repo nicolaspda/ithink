@@ -1,7 +1,7 @@
 //Define os States
 export const state = () => {
   return {
-    authenticated: false,
+    authenticated: 'false',
     name: '',
     picture: ''
   }
@@ -10,7 +10,7 @@ export const state = () => {
 //Define as mutações
 export const mutations = {
     alterLogin(state) {
-      state.authenticated = window.localStorage.getItem('authenticated')
+      state.authenticated = localStorage.getItem('authenticated')
     },
     SET_VARS (state, value) {
       state.name = value.name

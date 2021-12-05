@@ -50,5 +50,9 @@ export default {
       ],
     }
   },
+   mounted: function () {
+    this.$store.commit('alterLogin')
+    this.$router.push('/')
+  }
 }
 </script>
