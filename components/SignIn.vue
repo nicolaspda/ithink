@@ -18,12 +18,15 @@ export default {
     handleCredentialResponse: function (response) {
       // decodeJwtResponse() is a custom function defined
       // to decode the credential response.
-
       const responsePayload = jwt_decode(response.credential)
+      console.log('ID: ' + responsePayload.sub) 
 
-      console.log('ID: ' + responsePayload.sub)
+      //Adiciona no Storage os itens do usuário
       localStorage.setItem('authenticated','true')
-      this.$store.commit('SET_VARS', responsePayload)
+      localStorage.setItem('name',responsePayload.name)
+      localStorage.setItem('picture',responsePayload.picture)
+      
+      //Commita as mudanças no VUEX
       this.$store.commit('alterLogin')
       this.$router.push('/')
     },

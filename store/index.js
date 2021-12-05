@@ -11,9 +11,7 @@ export const state = () => {
 export const mutations = {
     alterLogin(state) {
       state.authenticated = localStorage.getItem('authenticated')
-    },
-    SET_VARS (state, value) {
-      state.name = value.name
-      state.picture = value.picture
+      state.name = localStorage.getItem('name')
+      state.picture = localStorage.getItem('picture')
     },
   }

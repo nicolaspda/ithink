@@ -39,10 +39,7 @@
             Ainda não há opiniões cadastradas para este título. <br />
             Seja o primeiro a adicionar!
           </v-banner>
-          <div
-            v-for="card in filterCards"
-            :key="card.name"
-          >
+          <div v-for="card in filterCards" :key="card.name">
             <transition-group name="component-fade" mode="out-in" appear>
               <Card
                 v-for="(card, key) in card.comments"
@@ -53,7 +50,7 @@
                 :grade="card.grade"
                 :description="card.description"
                 :person="card.person"
-                :picture="card.picture"   
+                :picture="card.picture"
                 :category="category"
               />
             </transition-group>
@@ -62,7 +59,12 @@
           <br />
         </v-container>
       </v-col>
-      <Data :title="title" :category="category" :cardSample="filterCards" :allCards="cards" />
+      <Data
+        :title="title"
+        :category="category"
+        :cardSample="filterCards"
+        :allCards="cards"
+      />
     </v-row>
   </div>
 </template>
@@ -88,7 +90,6 @@ import slider from '~/components/slider.vue'
 import axios from 'axios'
 
 export default {
-
   components: { slider, Card },
   data: function () {
     return {
@@ -129,6 +130,9 @@ export default {
         this.noCards = false
       }
     },
+  },
+  mounted: function () {
+    this.$store.commit('alterLogin')
   },
 }
 </script>

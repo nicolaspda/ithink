@@ -15,8 +15,8 @@
           <v-icon v-else>mdi-message-text</v-icon>
         </v-btn>
       </template>
-      <v-btn fab dark small color="green">
-        <v-icon>mdi-pencil</v-icon>
+      <v-btn fab dark small color="grey darken-1" @click="SignOut">
+        <v-icon>mdi-logout</v-icon>
       </v-btn>
       <v-btn fab dark small color="indigo" @click.stop="modalCard">
         <v-icon>mdi-plus</v-icon>
@@ -164,6 +164,12 @@ export default {
   methods: {
     toTop() {
       this.$vuetify.goTo(0)
+    },
+    SignOut() {
+      localStorage.removeItem('authenticated')
+      localStorage.removeItem('name')
+      localStorage.removeItem('picture')
+      this.$router.push('/login')
     },
     editComment() {
       this.alertDanger = false
