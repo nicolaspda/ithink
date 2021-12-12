@@ -7,23 +7,6 @@
         <br />
         <SignIn class="pa-8" />
       </v-row>
-      <v-row>
-        <v-carousel
-          cycle
-          hide-delimiter-background
-          show-arrows-on-hover
-          :show-arrows="false"
-          height="250"
-          interval="4000"
-        >
-          <v-carousel-item
-            v-for="(slide, i) in slides"
-            :key="i"
-            :src="slide.src"
-          >
-          </v-carousel-item>
-        </v-carousel>
-      </v-row>
     </v-col>
   </v-row>
 </template>
@@ -34,20 +17,6 @@
 export default {
   data() {
     return {
-      slides: [
-        {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-        },
-        {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
-        },
-        {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-        },
-        {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
-        },
-      ],
     }
   },
    mounted: function () {
