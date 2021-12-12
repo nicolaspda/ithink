@@ -21,7 +21,13 @@
             path: 'content/',
             query: {
               title: item.name || item.title,
-              img: item.profile_path===undefined ? 'https://image.tmdb.org/t/p/w500/' + item.poster_path : 'https://image.tmdb.org/t/p/w500/' + item.profile_path,
+              img: item.poster_path != undefined
+                    ? 'https://image.tmdb.org/t/p/w500/' + item.poster_path
+                    : item.backdrop_path != undefined
+                    ? 'https://image.tmdb.org/t/p/w500/' + item.backdrop_path
+                    : item.profile_path != undefined
+                    ? 'https://image.tmdb.org/t/p/w500/' + item.profile_path
+                    : 'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg',
               category: item.media_type,
             },
           }"
