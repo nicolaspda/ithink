@@ -8,17 +8,32 @@
         <v-icon color="green accent-2" x-large>mdi-trending-up</v-icon>
       </v-row>
       <br />
-      <v-carousel
-        cycle
-        hide-delimiter-background
-        show-arrows-on-hover
-        :show-arrows="false"
-        height="450"
-        interval="4000"
-      >
-        <v-carousel-item v-for="(img, i) in imgs" :key="i" :src="img.profile_path === undefined ? 'https://image.tmdb.org/t/p/w500/' + img.poster_path : 'https://image.tmdb.org/t/p/w500/' + img.profile_path">
-        </v-carousel-item>
-      </v-carousel>
+      <v-col v-for="(img, i) in limitArray" :key="i" cols="12">
+        <v-card color="grey lighten-5" elevation="7">
+          <div class="d-flex flex-no-wrap justify-space-between">
+            <div>
+              <v-card-title
+                class="text-h6"
+                v-text="img.name || img.title"
+              ></v-card-title>
+              <v-card-subtitle v-text="img.media_type"></v-card-subtitle>
+            </div>
+            <v-avatar class="ma-3" size="125" tile>
+              <v-img
+                :src="
+                    img.poster_path != undefined
+                    ? 'https://image.tmdb.org/t/p/w500/' + img.poster_path
+                    : img.backdrop_path != undefined
+                    ? 'https://image.tmdb.org/t/p/w500/' + img.backdrop_path
+                    : img.profile_path != undefined
+                    ? 'https://image.tmdb.org/t/p/w500/' + img.profile_path
+                    : 'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg'
+                "
+              ></v-img>
+            </v-avatar>
+          </div>
+        </v-card>
+      </v-col>
     </v-col>
   </v-row>
 </template>
@@ -49,15 +64,19 @@ export default {
                   title.name
               )
               .then((response) => {
-                this.imgs.push(response.data.results[0]) 
+                this.imgs.push(response.data.results[0])
               })
           })
         })
     },
   },
-
   created: function () {
     this.getImgs()
+  },
+  computed: {
+    limitArray: function () {
+      return this.imgs.slice(0, 5)
+    },
   },
 }
 </script>
