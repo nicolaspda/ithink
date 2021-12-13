@@ -249,6 +249,7 @@ export default {
           //Lógica que altera a porcentagem de likes vs dislikes no Slider
           const totArray = this.cardSample[0].comments.length + 1
           this.cardSample[0].total = (totalLikes / totArray) * 100
+          this.cardSample[0].date = moment().format()
 
           //Adiciona os dados digitados e faz o Post
           this.cardSample[0].comments.push(this.cardData)
@@ -267,6 +268,7 @@ export default {
             comments: [this.cardData],
             name: this.title,
             total: this.cardData.grade === true ? 100 : 0,
+            date: moment().format()
           }
           this.allCards.push(firstCard)
           console.log('FirstCard')

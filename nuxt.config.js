@@ -19,6 +19,10 @@ export default {
         src: "https://accounts.google.com/gsi/client",
         async: true,
       },
+      {
+        src:
+          'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'
+      }
     ],
   },
 
