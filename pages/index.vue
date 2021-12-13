@@ -21,7 +21,7 @@
             <v-avatar class="ma-3" size="125" tile>
               <v-img
                 :src="
-                    img.poster_path != undefined
+                  img.poster_path != undefined
                     ? 'https://image.tmdb.org/t/p/w500/' + img.poster_path
                     : img.backdrop_path != undefined
                     ? 'https://image.tmdb.org/t/p/w500/' + img.backdrop_path
@@ -58,14 +58,17 @@ export default {
         .get('https://api.npoint.io/62237f9c648e7e1cd160')
         .then((response) => {
           response.data.forEach((title) => {
-            axios
-              .get(
-                'https://api.themoviedb.org/3/search/multi?api_key=36fa7134e42de3076a18d9b0d61ee173&language=pt-BR&include_adult=false&query=' +
-                  title.name
-              )
-              .then((response) => {
-                this.imgs.push(response.data.results[0])
-              })
+            console.log(title.date)
+            if (moment(String(title.date)).isAfter(moment().subtract(24, 'hours'))) {
+              axios
+                .get(
+                  'https://api.themoviedb.org/3/search/multi?api_key=36fa7134e42de3076a18d9b0d61ee173&language=pt-BR&include_adult=false&query=' +
+                    title.name
+                )
+                .then((response) => {
+                  this.imgs.push(response.data.results[0])
+                })
+            }
           })
         })
     },
