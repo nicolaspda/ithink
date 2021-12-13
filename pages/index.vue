@@ -58,7 +58,7 @@ export default {
         .get('https://api.npoint.io/62237f9c648e7e1cd160')
         .then((response) => {
           response.data.forEach((title) => {
-            console.log(title.date)
+            //COMPARA A DATA E IDENTIFICA QUEM TEVE ATUALIZAÇÃO NAS ÚLTIMAS 24H
             if (moment(String(title.date)).isAfter(moment().subtract(24, 'hours'))) {
               axios
                 .get(

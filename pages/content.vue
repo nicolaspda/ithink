@@ -11,7 +11,12 @@
           rounded
           elevation="15"
         >
-          <div>{{ title }}</div>
+          <div>
+            {{ title }}<br />
+            <v-btn icon color="white" small fab elevation="12" to="/"
+              ><v-icon>mdi-arrow-left</v-icon></v-btn
+            >
+          </div>
           <v-row>
             <v-col align="right">
               <v-img :src="img" max-height="140" max-width="100"></v-img>
@@ -26,7 +31,6 @@
           </v-row>
         </v-app-bar>
         <br /><br /><br /><br /><br /><br /><br />
-
         <v-container>
           <!-- Aqui vão aparecer os cards -->
           <v-banner
