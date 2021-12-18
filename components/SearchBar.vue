@@ -11,8 +11,8 @@
       label="Pesquise aqui"
       :items="titulos"
       item-text="name"
-      item-value="item-disabled"
-      @keyup="go"
+      item-value="item-disabled" 
+      :search-input.sync="search"
     >
       <template v-slot:item="{ item }">
         <v-list-item
@@ -61,16 +61,21 @@ export default {
         })
     },
     go: function () {
-      console.log('foi')
-      this.search = document.getElementById('autocomplete').value
       //Usa uma função que realiza delay pra fazer a chamada
-      //Avaliar melhoria no futuro para fazer 1 request apenas
+      clearTimeout(this._timerId);      
       this.isLoading = true
-      var self = this
-      setTimeout(function () {
-        self.gettitulo()
-        self.isLoading = false
-      }, 2000)
+      this._timerId = setTimeout(() => {
+        this.gettitulo()
+        this.isLoading = false
+      }, 2000);
+    },
+  },
+   watch: {
+    search (val) {
+      if (!val) {
+       return
+      } 
+      this.go()
     },
   },
 }
