@@ -66,6 +66,7 @@
       <Data
         :title="title"
         :category="category"
+        :id="id"
         :cardSample="filterCards"
         :allCards="cards"
       />
@@ -99,6 +100,7 @@ export default {
     return {
       title: '',
       img: '',
+      img: '',
       category: '',
       cards: [],
       noCards: false,
@@ -117,6 +119,7 @@ export default {
     this.title = this.$nuxt._route.query.title
     this.img = this.$nuxt._route.query.img
     this.category = this.$nuxt._route.query.category
+    this.id = this.$nuxt._route.query.id
     this.getCards()
   },
   computed: {

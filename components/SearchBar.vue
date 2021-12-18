@@ -30,6 +30,7 @@
                     ? 'https://image.tmdb.org/t/p/w500/' + item.profile_path
                     : 'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg',
               category: item.media_type,
+              id: item.id
             },
           }"
           >{{ item.name }}{{ item.title }}</v-list-item

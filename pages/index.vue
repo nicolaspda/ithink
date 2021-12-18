@@ -22,6 +22,7 @@
                     ? 'https://image.tmdb.org/t/p/w500/' + img.profile_path
                     : 'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg',
               category: img.media_type,
+              id: img.id,
             },
           }">
           <div class="d-flex flex-no-wrap justify-space-between">
@@ -80,7 +81,10 @@ export default {
                     title.name
                 )
                 .then((response) => {
-                  this.imgs.push(response.data.results[0])
+                  response.data.results.forEach((id)=>{
+                     if(id.id == title.id) 
+                      this.imgs.push(id)
+                  })  
                 })
             }
           })

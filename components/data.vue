@@ -140,6 +140,7 @@ export default {
   props: {
     title: String,
     category: String,
+    id: String,
     cardSample: Array,
     allCards: Array,
   },
@@ -246,10 +247,11 @@ export default {
             totalLikes++
           }
 
-          //Lógica que altera a porcentagem de likes vs dislikes no Slider
+          //Lógica que altera a porcentagem de likes vs dislikes no Slider e envia para a API
           const totArray = this.cardSample[0].comments.length + 1
           this.cardSample[0].total = (totalLikes / totArray) * 100
           this.cardSample[0].date = moment().format()
+          this.cardSample[0].id = this.id
 
           //Adiciona os dados digitados e faz o Post
           this.cardSample[0].comments.push(this.cardData)
@@ -268,7 +270,8 @@ export default {
             comments: [this.cardData],
             name: this.title,
             total: this.cardData.grade === true ? 100 : 0,
-            date: moment().format()
+            date: moment().format(),
+            id: this.id
           }
           this.allCards.push(firstCard)
           console.log('FirstCard')
