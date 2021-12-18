@@ -258,7 +258,7 @@ export default {
           this.allCards.push(this.cardSample[0])
 
           const response = await axios.post(
-            'https://api.npoint.io/62237f9c648e7e1cd160',
+            'https://api.npoint.io/bee499efa366356aeeb6',
             this.allCards
           )
           console.log(response.data)
@@ -276,7 +276,7 @@ export default {
           this.allCards.push(firstCard)
           console.log('FirstCard')
           const response = await axios.post(
-            'https://api.npoint.io/62237f9c648e7e1cd160',
+            'https://api.npoint.io/bee499efa366356aeeb6',
             this.allCards
           )
           console.log(response.data)

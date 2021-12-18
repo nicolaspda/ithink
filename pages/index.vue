@@ -70,7 +70,7 @@ export default {
   methods: {
     getImgs: function () {
       axios
-        .get('https://api.npoint.io/62237f9c648e7e1cd160')
+        .get('https://api.npoint.io/bee499efa366356aeeb6')
         .then((response) => {
           response.data.forEach((title) => {
             //COMPARA A DATA E IDENTIFICA QUEM TEVE ATUALIZAÇÃO NAS ÚLTIMAS 24H

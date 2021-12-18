@@ -100,7 +100,7 @@ export default {
     return {
       title: '',
       img: '',
-      img: '',
+      id: '',
       category: '',
       cards: [],
       noCards: false,
@@ -109,7 +109,7 @@ export default {
   methods: {
     getCards: function () {
       axios
-        .get('https://api.npoint.io/62237f9c648e7e1cd160')
+        .get('https://api.npoint.io/bee499efa366356aeeb6')
         .then((response) => {
           this.cards = response.data
         })
@@ -125,7 +125,7 @@ export default {
   computed: {
     filterCards: function () {
       return this.cards.filter((card) => {
-        return card.name.match(this.title)
+        return card.id.match(this.id)
       })
     },
   },
