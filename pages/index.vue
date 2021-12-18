@@ -8,6 +8,17 @@
         <v-icon color="green accent-2" x-large>mdi-trending-up</v-icon>
       </v-row>
       <br />
+       <v-divider dark
+      ></v-divider>
+      <v-banner
+            dark
+            rounded
+            v-if="noCards"
+            align="center"
+            icon="mdi-account-clock"
+          >
+            As coisas estão meio paradas por aqui... <br />
+          </v-banner>
       <v-col v-for="(img, i) in limitArray" :key="i" cols="12">
         <v-card color="grey lighten-5" elevation="7" link
           :to="{
@@ -65,6 +76,7 @@ export default {
   data: function () {
     return {
       imgs: [],
+      noCards: false
     }
   },
   methods: {
@@ -97,6 +109,15 @@ export default {
   computed: {
     limitArray: function () {
       return this.imgs.slice(0, 5)
+    },
+  },
+    watch: {
+    limitArray: function (val) {
+      if (val.length == 0) {
+        this.noCards = true
+      } else {
+        this.noCards = false
+      }
     },
   },
 }
