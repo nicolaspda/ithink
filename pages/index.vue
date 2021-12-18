@@ -9,7 +9,21 @@
       </v-row>
       <br />
       <v-col v-for="(img, i) in limitArray" :key="i" cols="12">
-        <v-card color="grey lighten-5" elevation="7">
+        <v-card color="grey lighten-5" elevation="7" link
+          :to="{
+            path: 'content/',
+            query: {
+              title: img.name || img.title,
+              img: img.poster_path != undefined
+                    ? 'https://image.tmdb.org/t/p/w500/' + img.poster_path
+                    : img.backdrop_path != undefined
+                    ? 'https://image.tmdb.org/t/p/w500/' + img.backdrop_path
+                    : img.profile_path != undefined
+                    ? 'https://image.tmdb.org/t/p/w500/' + img.profile_path
+                    : 'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg',
+              category: img.media_type,
+            },
+          }">
           <div class="d-flex flex-no-wrap justify-space-between">
             <div>
               <v-card-title
