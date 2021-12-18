@@ -13,6 +13,7 @@
       item-text="name"
       item-value="item-disabled" 
       :search-input.sync="search"
+      no-filter
     >
       <template v-slot:item="{ item }">
         <v-list-item
@@ -67,7 +68,7 @@ export default {
       this._timerId = setTimeout(() => {
         this.gettitulo()
         this.isLoading = false
-      }, 2000);
+      }, 1500);
     },
   },
    watch: {
