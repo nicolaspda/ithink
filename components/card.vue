@@ -32,11 +32,11 @@
         </v-col>
         <v-col align="right">
           <v-btn v-if="likeTrigger" class="ma-2" text icon @click="countUp">
-            <v-icon color="green lighten-2">mdi-thumb-up-outline</v-icon>
+            <v-icon color="grey">mdi-thumb-up-outline</v-icon>
             {{ resultUp }}
           </v-btn>
           <v-btn v-else class="ma-2" text icon @click="countUp">
-            <v-icon color="green lighten-2">mdi-thumb-up</v-icon>
+            <v-icon color="grey">mdi-thumb-up</v-icon>
             {{ resultUp }}
           </v-btn>
           <v-btn
@@ -46,11 +46,11 @@
             icon
             @click="countDown"
           >
-            <v-icon color="red lighten-2">mdi-thumb-down-outline</v-icon>
+            <v-icon color="grey">mdi-thumb-down-outline</v-icon>
             {{ resultDown }}
           </v-btn>
           <v-btn v-else class="ma-2" text icon @click="countDown">
-            <v-icon color="red lighten-2">mdi-thumb-down</v-icon>
+            <v-icon color="grey">mdi-thumb-down</v-icon>
             {{ resultDown }}
           </v-btn>
         </v-col>
