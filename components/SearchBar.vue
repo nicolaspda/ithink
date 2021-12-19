@@ -11,30 +11,38 @@
       label="Pesquise aqui"
       :items="titulos"
       item-text="name"
-      item-value="item-disabled" 
+      item-value="item-disabled"
       :search-input.sync="search"
       no-filter
     >
       <template v-slot:item="{ item }">
         <v-list-item
+          two-line
           link
           :to="{
             path: 'content/',
             query: {
               title: item.name || item.title,
-              img: item.poster_path != undefined
-                    ? 'https://image.tmdb.org/t/p/w500/' + item.poster_path
-                    : item.backdrop_path != undefined
-                    ? 'https://image.tmdb.org/t/p/w500/' + item.backdrop_path
-                    : item.profile_path != undefined
-                    ? 'https://image.tmdb.org/t/p/w500/' + item.profile_path
-                    : 'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg',
+              img:
+                item.poster_path != undefined
+                  ? 'https://image.tmdb.org/t/p/w500/' + item.poster_path
+                  : item.backdrop_path != undefined
+                  ? 'https://image.tmdb.org/t/p/w500/' + item.backdrop_path
+                  : item.profile_path != undefined
+                  ? 'https://image.tmdb.org/t/p/w500/' + item.profile_path
+                  : 'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg',
               category: item.media_type,
-              id: item.id
+              id: item.id,
             },
           }"
-          >{{ item.name }}{{ item.title }}</v-list-item
-        >
+        >  
+          <v-list-item-content>
+            <v-list-item-title
+              >{{ item.name }}{{ item.title }}</v-list-item-title
+            >
+            <v-list-item-subtitle><i>{{ item.media_type }}</i></v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
       </template>
     </v-autocomplete>
   </div>
@@ -64,19 +72,19 @@ export default {
     },
     go: function () {
       //Usa uma função que realiza delay pra fazer a chamada
-      clearTimeout(this._timerId);      
+      clearTimeout(this._timerId)
       this.isLoading = true
       this._timerId = setTimeout(() => {
         this.gettitulo()
         this.isLoading = false
-      }, 1500);
+      }, 1500)
     },
   },
-   watch: {
-    search (val) {
+  watch: {
+    search(val) {
       if (!val) {
-       return
-      } 
+        return
+      }
       this.go()
     },
   },
