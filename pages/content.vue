@@ -8,8 +8,9 @@
           prominent
           extended
           absolute
-          rounded
+          rounded="b-xl"
           elevation="15"
+          class="animate__animated animate__backInDown"
         >
           <div>
             {{ title }}<br />
