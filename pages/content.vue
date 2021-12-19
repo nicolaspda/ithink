@@ -13,7 +13,19 @@
           class="animate__animated animate__backInDown"
         >
           <div>
-            {{ title }}<br />
+            {{ title }} <br />
+            <i class="grey--text font-weight-light" style="font-size: 15px">
+              {{
+                category === 'person'
+                  ? 'Celebridade'
+                  : category === 'tv'
+                  ? 'Série/Tv'
+                  : category === 'movie'
+                  ? 'Filme'
+                  : ''
+              }}
+            </i>
+            <br />
             <v-btn icon color="white" small fab elevation="12" to="/"
               ><v-icon>mdi-arrow-left</v-icon></v-btn
             >
@@ -110,7 +122,9 @@ export default {
   methods: {
     getCards: function () {
       axios
-        .get('https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O.json')
+        .get(
+          'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O.json'
+        )
         .then((response) => {
           this.cards = response.data
         })

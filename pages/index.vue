@@ -42,7 +42,7 @@
                 class="text-h6"
                 v-text="img.name || img.title"
               ></v-card-title>
-              <v-card-subtitle v-text="img.media_type"></v-card-subtitle>
+              <v-card-subtitle>{{img.media_type === "person" ? "Celebridade" : img.media_type === "tv" ? "Série/Tv" : img.media_type === "movie" ? "Filme" : "" }}</v-card-subtitle>
             </div>
             <v-avatar class="ma-3" size="125" tile>
               <v-img

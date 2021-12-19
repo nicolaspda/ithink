@@ -40,7 +40,7 @@
             <v-list-item-title
               >{{ item.name }}{{ item.title }}</v-list-item-title
             >
-            <v-list-item-subtitle><i>{{ item.media_type }}</i></v-list-item-subtitle>
+            <v-list-item-subtitle><i>{{  item.media_type === "person" ? "Celebridade" : item.media_type === "tv" ? "Série/Tv" : item.media_type === "movie" ? "Filme" : "" }}</i></v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </template>

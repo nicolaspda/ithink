@@ -1,9 +1,6 @@
 <template>
   <v-card elevation="7" class="mb-5">
     <v-card-title class="headline">
-      <NuxtLink to="/inspire"> {{ category }} </NuxtLink>
-      &nbsp; - &nbsp;
-      <NuxtLink to="/content"> {{ title }} </NuxtLink>
     </v-card-title>
     <v-card-text>
       <v-row>
