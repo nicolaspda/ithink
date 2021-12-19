@@ -82,7 +82,7 @@ export default {
   methods: {
     getImgs: function () {
       axios
-        .get('https://api.npoint.io/bee499efa366356aeeb6')
+        .get('https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O.json')
         .then((response) => {
           response.data.forEach((title) => {
             //COMPARA A DATA E IDENTIFICA QUEM TEVE ATUALIZAÇÃO NAS ÚLTIMAS 24H

@@ -257,8 +257,8 @@ export default {
           this.cardSample[0].comments.push(this.cardData)
           this.allCards.push(this.cardSample[0])
 
-          const response = await axios.post(
-            'https://api.npoint.io/bee499efa366356aeeb6',
+          const response = await axios.put(
+            'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O.json',
             this.allCards
           )
           console.log(response.data)
@@ -275,8 +275,10 @@ export default {
           }
           this.allCards.push(firstCard)
           console.log('FirstCard')
-          const response = await axios.post(
-            'https://api.npoint.io/bee499efa366356aeeb6',
+          console.log(this.allCards)
+
+          const response = await axios.put(
+            'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O.json',
             this.allCards
           )
           console.log(response.data)
