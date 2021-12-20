@@ -1,7 +1,8 @@
 # iThink 
-<center>![iThink](/static/iThinkLogo.svg =300x50 "iThink")</center>
 
-<center>Atualmente disponível na Play store!</center>
+![iThink](iThinkLogo.svg =300x50 "iThink")
+
+Em breve disponível na Play store!
 
 [![PlayStore](https://raw.githubusercontent.com/steverichey/google-play-badge-svg/master/img/pt-br_get.svg =300x50)](https://play.google.com/store)
 
