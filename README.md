@@ -6,6 +6,9 @@
 
 <p align="center"> 
 Em breve disponível na Play store!
+</p>
+
+<p align="center"> 
   <a href="https://play.google.com/store">  
   <img width="200" src="https://raw.githubusercontent.com/steverichey/google-play-badge-svg/master/img/pt-br_get.svg" alt="PlayStore">
   </a>
