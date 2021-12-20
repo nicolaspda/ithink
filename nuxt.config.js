@@ -49,6 +49,23 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: 'AIzaSyCZYXTXKxA6qIzwV3YTA3m3BWrWfnwJgt0',
+          authDomain: 'ithink-332305.firebaseapp.com',
+          projectId: 'ithink-332305',
+          storageBucket: 'ithink-332305.appspot.com',
+          messagingSenderId: '644103719072',
+          appId: '1:644103719072:web:20528bc414ebe42efee1c5',
+          measurementId: 'G-VLS6KM6VVF'
+        },
+        services: {
+          analytics: true // Just as example. Can be any other service.
+        }
+      }
+    ]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

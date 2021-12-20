@@ -110,6 +110,11 @@ import axios from 'axios'
 
 export default {
   components: { slider, Card },
+  head() {
+    return {
+      title: "Content" + this.title 
+    };
+  },
   data: function () {
     return {
       title: '',
