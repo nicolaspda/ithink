@@ -1,10 +1,15 @@
 # iThink 
 
-![iThink](https://raw.githubusercontent.com/nicolaspda/ithink/master/static/iThinkLogo.svg "iThink")
+<p align="center"> 
+  <img width="200" src="https://raw.githubusercontent.com/nicolaspda/ithink/master/static/iThinkLogo.svg" alt="iThink">
+
 
 Em breve disponível na Play store!
 
-[![PlayStore](https://raw.githubusercontent.com/steverichey/google-play-badge-svg/master/img/pt-br_get.svg =300x50)](https://play.google.com/store)
+  <a href="https://play.google.com/store">  
+  <img width="200" src="https://raw.githubusercontent.com/steverichey/google-play-badge-svg/master/img/pt-br_get.svg" alt="PlayStore">
+  </a>
+</p>
 
 ## Overview do App
 
@@ -15,18 +20,19 @@ Aquela série que você achou o máximo e precisa espalhar por aí?
 Ou quando você precisa apenas demonstrar o quanto você não vai com a cara de alguém?
 
 Para isso temos o iThink! ❤
+
 Uma plataforma que permite ao usuário realizar a consulta, cadastro e verificar tanto a nota quanto a opinião popular sobre <ins> filmes, séries, programas de TV e celebridades.</ins>
 
 ## Layout
 
-[Figuras serão geradas]
+[Figuras ainda serão geradas]
 ## Como utilizar 
 
 - Baixe o App nos canais oficiais (Primeiro link deste guia)
 - Acesse com seu login do Google
 - Verifique na tela inicial os títulos mais comentados nas últimas 24h
 - Procure pelo título desejado na barra de pesquisa
-- Descubra a nota atual e as opiniões dos usuários
+- Descubra a nota atual do título e as opiniões dos usuários
 - Clique no botão no canto inferior direito da tela e cadastre a sua opinião!
 
 
@@ -40,7 +46,7 @@ Uma plataforma que permite ao usuário realizar a consulta, cadastro e verificar
 - NuxtJS (Vue)
 - Firebase
 
-Para informações referente a cocumentação oficial do Nuxt, acesse o link a seguir: [Documentation](https://nuxtjs.org).
+Para informações referente a cocumentação oficial do Nuxt, acesse o link a seguir: [Documentação](https://nuxtjs.org).
 
 ### Licença 📝
 
