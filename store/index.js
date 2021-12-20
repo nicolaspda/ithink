@@ -3,7 +3,8 @@ export const state = () => {
   return {
     authenticated: 'false',
     name: '',
-    picture: ''
+    picture: '',
+    id: ''
   }
 }
 
@@ -13,5 +14,6 @@ export const mutations = {
       state.authenticated = localStorage.getItem('authenticated')
       state.name = localStorage.getItem('name')
       state.picture = localStorage.getItem('picture')
+      state.id = localStorage.getItem('id')
     },
   }

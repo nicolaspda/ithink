@@ -1,7 +1,6 @@
 <template>
   <v-card elevation="7" class="mb-5">
-    <v-card-title class="headline">
-    </v-card-title>
+    <v-card-title class="headline"> </v-card-title>
     <v-card-text>
       <v-row>
         <v-col align="center">
@@ -9,7 +8,6 @@
             <img :src="picture" alt="MyPhoto" />
           </v-avatar>
           <br /><br /><br />
-
           <v-icon v-if="grade" color="green lighten-2">mdi-thumb-up</v-icon>
           <v-icon v-else color="red lighten-2">mdi-thumb-down</v-icon>
         </v-col>
@@ -19,7 +17,6 @@
           </NuxtLink>
         </v-col>
       </v-row>
-
       <hr class="my-3" />
       <v-row>
         <v-col align="left">
@@ -60,19 +57,21 @@
 export default {
   props: {
     title: String,
-    category: String,
+    chave: Number,
     description: String,
     resultUp: Number,
     resultDown: Number,
     grade: Boolean,
     person: String,
-    picture: String
+    picture: String,
+    cardSample: Array,
   },
   data: function () {
     return {
       /*Likes*/
       likeTrigger: true,
       dislikeTrigger: true,
+      likeState: this.$store.state.id
     }
   },
   methods: {
@@ -87,6 +86,14 @@ export default {
       } else {
         this.resultUp -= 1
       }
+      /*Adiciona nos comentários
+      const valor = this.cardSample[0].comments.filter(comment=>comment.likeState)
+      const resul = valor.filter(val=>val.id = this.$store.state.id )
+      console.log(resul)*/
+
+      //Se não existe id, adiciona
+      //Se existe id, qual valor?
+
     },
 
     countDown() {
@@ -100,6 +107,7 @@ export default {
       } else {
         this.resultDown -= 1
       }
+      //FUNCAO DE PUT
     },
   },
 }

@@ -25,6 +25,7 @@ export default {
       localStorage.setItem('authenticated','true')
       localStorage.setItem('name',responsePayload.name)
       localStorage.setItem('picture',responsePayload.picture)
+      localStorage.setItem('id',responsePayload.sub)
       
       //Commita as mudanças no VUEX
       this.$store.commit('alterLogin')
