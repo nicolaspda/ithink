@@ -1,6 +1,6 @@
 # iThink 
 
-![iThink](iThinkLogo.svg =300x50 "iThink")
+![iThink](https://raw.githubusercontent.com/nicolaspda/ithink/master/static/iThinkLogo.svg "iThink")
 
 Em breve disponível na Play store!
 
@@ -17,9 +17,12 @@ Ou quando você precisa apenas demonstrar o quanto você não vai com a cara de 
 Para isso temos o iThink! ❤
 Uma plataforma que permite ao usuário realizar a consulta, cadastro e verificar tanto a nota quanto a opinião popular sobre <ins> filmes, séries, programas de TV e celebridades.</ins>
 
-## Como utilizar
+## Layout
 
-- Baixe o App nos canais oficiais
+[Figuras serão geradas]
+## Como utilizar 
+
+- Baixe o App nos canais oficiais (Primeiro link deste guia)
 - Acesse com seu login do Google
 - Verifique na tela inicial os títulos mais comentados nas últimas 24h
 - Procure pelo título desejado na barra de pesquisa
@@ -27,23 +30,23 @@ Uma plataforma que permite ao usuário realizar a consulta, cadastro e verificar
 - Clique no botão no canto inferior direito da tela e cadastre a sua opinião!
 
 
-## O que vem por aí...
+## O que vem por aí... 🚧
 
 - Consulta de jogos
 - Consulta de empresas
 
-## Tecnologias envolvidas
+## Tecnologias envolvidas 💻
 
 - NuxtJS (Vue)
 - Firebase
 
 Para informações referente a cocumentação oficial do Nuxt, acesse o link a seguir: [Documentation](https://nuxtjs.org).
 
-### Licença
+### Licença 📝
 
 Este é um software proprietário. É estritamente proibida qualquer tipo de cópia, redistribuição, modificações e outras alterações.
 O único meio de adquirir este aplicativo é por meio de seus canais oficiais.
 
-### Sobre o autor
+### Sobre o autor ☺
 
 [Nicolas Pedroso](https://github.com/nicolaspda)
