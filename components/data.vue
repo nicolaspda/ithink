@@ -170,6 +170,7 @@ export default {
       localStorage.removeItem('authenticated')
       localStorage.removeItem('name')
       localStorage.removeItem('picture')
+      localStorage.removeItem('id')
       this.$router.push('/login')
     },
     editComment() {

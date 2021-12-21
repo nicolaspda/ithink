@@ -71,7 +71,6 @@ export default {
       /*Likes*/
       likeTrigger: true,
       dislikeTrigger: true,
-      likeState: this.$store.state.id
     }
   },
   methods: {
@@ -86,14 +85,20 @@ export default {
       } else {
         this.resultUp -= 1
       }
-      /*Adiciona nos comentários
-      const valor = this.cardSample[0].comments.filter(comment=>comment.likeState)
-      const resul = valor.filter(val=>val.id = this.$store.state.id )
-      console.log(resul)*/
+      //Adiciona nos comentários
+      this.cardSample[0].comments.forEach((u) => {
+        if (u.likeState != undefined) {
+          console.log(u.likeState)
+          if (u.likeState.id === this.$store.state.id) {
+            console.log(data.id)
+          } else {
+            console.log('nao tem')
+          }
+        }
+      })
 
       //Se não existe id, adiciona
       //Se existe id, qual valor?
-
     },
 
     countDown() {

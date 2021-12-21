@@ -112,7 +112,7 @@ export default {
   components: { slider, Card },
   head() {
     return {
-      title: "Content " + this.title 
+      title: this.title 
     };
   },
   data: function () {
