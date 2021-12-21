@@ -89,8 +89,8 @@ export default {
       this.cardSample[0].comments.forEach((u) => {
         if (u.likeState != undefined) {
           console.log(u.likeState)
-          if (u.likeState.id === this.$store.state.id) {
-            console.log(data.id)
+          if (u.likeState[0].id == this.$store.state.id) {
+            console.log('achou')
           } else {
             console.log('nao tem')
           }
