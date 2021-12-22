@@ -57,7 +57,6 @@
 export default {
   props: {
     title: String,
-    chave: Number,
     description: String,
     resultUp: Number,
     resultDown: Number,
@@ -65,10 +64,11 @@ export default {
     person: String,
     picture: String,
     cardSample: Array,
+    likeState: Array,
   },
   data: function () {
     return {
-      /*Likes*/
+      //Likes
       likeTrigger: true,
       dislikeTrigger: true,
     }
@@ -85,22 +85,9 @@ export default {
       } else {
         this.resultUp -= 1
       }
-      //Adiciona nos comentários
-      this.cardSample[0].comments.forEach((u) => {
-        if (u.likeState != undefined) {
-          console.log(u.likeState)
-          if (u.likeState[0].id == this.$store.state.id) {
-            console.log('achou')
-          } else {
-            console.log('nao tem')
-          }
-        }
-      })
-
       //Se não existe id, adiciona
       //Se existe id, qual valor?
     },
-
     countDown() {
       this.dislikeTrigger = !this.dislikeTrigger
       if (this.likeTrigger === false) {
@@ -112,8 +99,21 @@ export default {
       } else {
         this.resultDown -= 1
       }
-      //FUNCAO DE PUT
     },
+  },
+  //REGISTRA OS LIKES DE QUEM JÁ OPINOU
+  created: function () {
+    if (this.likeState !== undefined) {
+      if (this.likeState[0].id == this.$store.state.id) {
+        if (this.likeState[0].result == true) {
+          this.likeTrigger = false
+          this.dislikeTrigger = true
+        } else {
+          this.likeTrigger = true
+          this.dislikeTrigger = false
+        }
+      }
+    }
   },
 }
 </script>

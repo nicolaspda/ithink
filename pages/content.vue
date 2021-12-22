@@ -61,7 +61,6 @@
               <Card
                 v-for="(card, key) in card.comments"
                 :key="key"
-                :chave="key"
                 :title="title"
                 :resultUp="card.resultUp"
                 :resultDown="card.resultDown"
@@ -70,6 +69,7 @@
                 :person="card.person"
                 :picture="card.picture"
                 :cardSample="filterCards"
+                :likeState="likeState"
               />
             </transition-group>
           </div>
