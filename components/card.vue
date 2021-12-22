@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import { state } from '~/store'
 export default {
   props: {
     title: String,
@@ -104,8 +105,8 @@ export default {
   //REGISTRA OS LIKES DE QUEM JÁ OPINOU
   created: function () {
     if (this.likeState !== undefined) {
-      if (this.likeState[0].id == this.$store.state.id) {
-        if (this.likeState[0].result == true) {
+      const stateId = this.likeState.find((like) => like.id == this.$store.state.id)
+        if (stateId.result == true) {
           this.likeTrigger = false
           this.dislikeTrigger = true
         } else {
@@ -113,7 +114,6 @@ export default {
           this.dislikeTrigger = false
         }
       }
-    }
   },
 }
 </script>
