@@ -69,7 +69,7 @@
                 :person="card.person"
                 :picture="card.picture"
                 :cardSample="filterCards"
-                :likeState="likeState"
+                :likeState="card.likeState"
               />
             </transition-group>
           </div>

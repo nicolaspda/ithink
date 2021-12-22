@@ -49,7 +49,7 @@ Uma plataforma que permite ao usuário realizar a consulta, cadastro e verificar
 - NuxtJS (Vue)
 - Firebase
 
-Para informações referente a cocumentação oficial do Nuxt, acesse o link a seguir: [Documentação](https://nuxtjs.org).
+Para informações referente a documentação oficial do Nuxt, acesse o link a seguir: [Documentação](https://nuxtjs.org).
 
 ### Licença 📝
 
