@@ -131,12 +131,13 @@ export default {
     },
   },
   watch: {
-    limitArray: function (val) {
-      if (val.length == 0) {
-        this.noCards = true
-      } else {
-        this.noCards = false
-      }
+    imgs: {
+      handler(newVal) {
+        if (newVal.length == 0) {
+          this.noCards = true
+        } else this.noCards = false
+      },
+      immediate: true,
     },
   },
 }
