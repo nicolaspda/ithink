@@ -32,7 +32,20 @@
           </div>
           <v-row>
             <v-col align="right">
-              <v-img :src="img" max-height="140" max-width="100"></v-img>
+                <v-img class="rounded" :src="img" max-height="140" max-width="100">
+                <template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular
+                      indeterminate
+                      color="grey lighten-5"
+                    ></v-progress-circular>
+                  </v-row>
+                </template>
+              </v-img>
               <v-col>
                 <Slider
                   v-for="card in filterCards"
@@ -112,8 +125,8 @@ export default {
   components: { slider, Card },
   head() {
     return {
-      title: this.title 
-    };
+      title: this.title,
+    }
   },
   data: function () {
     return {

@@ -107,7 +107,7 @@ export default {
       }
     },
     registerLike(val) {
-      //Se não existe id, adiciona
+     
       //Se existe id, remove a atual
       if (this.likeState !== undefined) {
         const stateId = this.likeState.find(
@@ -116,10 +116,13 @@ export default {
         const i = this.likeState.findIndex(
           (like) => like.id == this.$store.state.id
         )
+        //SE NÃO EXISTIR id, ADICIONA
         if (!stateId) {
           this.likeState.push({ id: this.$store.state.id, result: val })
+        //SE EXISTIR, TESTA SE QUAL VALOR E TROCA ELE
         } else if (stateId.result == val) {
           stateId.result = !stateId.result
+         //SE EXISTIR, E NÃO FOR O MESMO VALOR, REMOVE
         } else {
           this.likeState.splice(i, 1)
         }
