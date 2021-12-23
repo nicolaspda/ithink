@@ -27,11 +27,11 @@
         <v-col align="right">
           <v-btn v-if="likeTrigger" class="ma-2" text icon @click="countUp">
             <v-icon color="grey">mdi-thumb-up-outline</v-icon>
-            {{ resultUp }}
+            {{ upResult }}
           </v-btn>
           <v-btn v-else class="ma-2" text icon @click="countUp">
             <v-icon color="grey">mdi-thumb-up</v-icon>
-            {{ resultUp }}
+            {{ upResult }}
           </v-btn>
           <v-btn
             v-if="dislikeTrigger"
@@ -41,11 +41,11 @@
             @click="countDown"
           >
             <v-icon color="grey">mdi-thumb-down-outline</v-icon>
-            {{ resultDown }}
+            {{ downResult }}
           </v-btn>
           <v-btn v-else class="ma-2" text icon @click="countDown">
             <v-icon color="grey">mdi-thumb-down</v-icon>
-            {{ resultDown }}
+            {{ downResult }}
           </v-btn>
         </v-col>
       </v-row>
@@ -54,7 +54,6 @@
 </template>
 
 <script>
-import { state } from '~/store'
 export default {
   props: {
     title: String,
@@ -72,6 +71,8 @@ export default {
       //Likes
       likeTrigger: true,
       dislikeTrigger: true,
+      upResult: this.resultUp,
+      downResult: this.resultDown,
     }
   },
   methods: {
@@ -79,26 +80,49 @@ export default {
       this.likeTrigger = !this.likeTrigger
       if (this.dislikeTrigger === false) {
         this.dislikeTrigger = true
-        this.resultDown -= 1
+        this.downResult -= 1
+        this.registerLike(true)
       }
       if (this.likeTrigger === false) {
-        this.resultUp += 1
+        this.upResult += 1
+        this.registerLike(true)
       } else {
-        this.resultUp -= 1
+        this.upResult -= 1
+        this.registerLike(false)
       }
-      //Se não existe id, adiciona
-      //Se existe id, qual valor?
     },
     countDown() {
       this.dislikeTrigger = !this.dislikeTrigger
       if (this.likeTrigger === false) {
         this.likeTrigger = true
-        this.resultUp -= 1
+        this.upResult -= 1
+        this.registerLike(false)
       }
       if (this.dislikeTrigger === false) {
-        this.resultDown += 1
+        this.downResult += 1
+        this.registerLike(false)
       } else {
-        this.resultDown -= 1
+        this.downResult -= 1
+        this.registerLike(true)
+      }
+    },
+    registerLike(val) {
+      //Se não existe id, adiciona
+      //Se existe id, remove a atual
+      if (this.likeState !== undefined) {
+        const stateId = this.likeState.find(
+          (like) => like.id == this.$store.state.id
+        )
+        const i = this.likeState.findIndex(
+          (like) => like.id == this.$store.state.id
+        )
+        if (!stateId) {
+          this.likeState.push({ id: this.$store.state.id, result: val })
+        } else if (stateId.result == val) {
+          stateId.result = !stateId.result
+        } else {
+          this.likeState.splice(i, 1)
+        }
       }
     },
   },
@@ -106,14 +130,14 @@ export default {
   created: function () {
     if (this.likeState !== undefined) {
       const stateId = this.likeState.find((like) => like.id == this.$store.state.id)
-        if (stateId.result == true) {
-          this.likeTrigger = false
-          this.dislikeTrigger = true
-        } else {
-          this.likeTrigger = true
-          this.dislikeTrigger = false
-        }
+      if (stateId.result == true) {
+        this.likeTrigger = false
+        this.dislikeTrigger = true
+      } else {
+        this.likeTrigger = true
+        this.dislikeTrigger = false
       }
+    }
   },
 }
 </script>
