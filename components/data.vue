@@ -159,6 +159,7 @@ export default {
         grade: null,
         resultUp: 0,
         resultDown: 0,
+        id: this.$store.state.id
       },
     }
   },
@@ -176,7 +177,7 @@ export default {
     editComment() {
       this.alertDanger = false
       this.cardSample[0].comments.forEach((comments, index) => {
-        if (comments.person == this.$store.state.name) {
+        if (comments.id == this.$store.state.id) {
           this.cardSample[0].comments.splice(index, 1)
         }
       })
@@ -187,7 +188,7 @@ export default {
       } else {
         this.dialog = true
         this.cardSample[0].comments.forEach((comments, index) => {
-          if (comments.person == this.$store.state.name) {
+          if (comments.id == this.$store.state.id) {
             console.log('Nope!')
             this.alertDanger = true
           }
