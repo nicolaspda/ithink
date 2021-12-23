@@ -160,7 +160,7 @@ export default {
         resultUp: 0,
         resultDown: 0,
         id: this.$store.state.id,
-        likeState: []
+        likeState: [{id: "", result: true}]
       },
     }
   },

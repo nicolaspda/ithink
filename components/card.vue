@@ -50,19 +50,10 @@
         </v-col>
       </v-row>
     </v-card-text>
-     <v-snackbar
-      v-model="snackbar"
-      rounded
-    >
+    <v-snackbar v-model="snackbar" rounded timeout="2000">
       {{ texto }}
-
       <template v-slot:action="{ attrs }">
-        <v-btn
-          color="blue"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
-        >
+        <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
           Fechar
         </v-btn>
       </template>
@@ -91,7 +82,7 @@ export default {
       upResult: this.resultUp,
       downResult: this.resultDown,
       snackbar: false,
-      texto: ''
+      texto: '',
     }
   },
   methods: {
@@ -99,11 +90,10 @@ export default {
       this.snackbar = true
       this.likeTrigger = !this.likeTrigger
       if (this.dislikeTrigger === false) {
-        this.texto = "Like removido"
+        this.texto = 'Like removido'
         this.dislikeTrigger = true
         this.downResult -= 1
         this.registerLike(true)
-
       }
       if (this.likeTrigger === false) {
         this.upResult += 1
@@ -111,7 +101,7 @@ export default {
         this.registerLike(true)
       } else {
         this.upResult -= 1
-        this.texto = "Like removido"
+        this.texto = 'Like removido'
         this.registerLike(false)
       }
     },
@@ -119,7 +109,7 @@ export default {
       this.snackbar = true
       this.dislikeTrigger = !this.dislikeTrigger
       if (this.likeTrigger === false) {
-        this.texto = "Dislike removido"
+        this.texto = 'Dislike removido'
         this.likeTrigger = true
         this.upResult -= 1
         this.registerLike(false)
@@ -129,13 +119,12 @@ export default {
         this.downResult += 1
         this.registerLike(false)
       } else {
-        this.texto = "Dislike removido"
+        this.texto = 'Dislike removido'
         this.downResult -= 1
         this.registerLike(true)
       }
     },
     registerLike(val) {
-     
       //Se existe id, remove a atual
       if (this.likeState !== undefined) {
         const stateId = this.likeState.find(
@@ -147,10 +136,10 @@ export default {
         //SE NÃO EXISTIR id, ADICIONA
         if (!stateId) {
           this.likeState.push({ id: this.$store.state.id, result: val })
-        //SE EXISTIR, TESTA SE QUAL VALOR E TROCA ELE
+          //SE EXISTIR, TESTA SE QUAL VALOR E TROCA ELE
         } else if (stateId.result == val) {
           stateId.result = !stateId.result
-         //SE EXISTIR, E NÃO FOR O MESMO VALOR, REMOVE
+          //SE EXISTIR, E NÃO FOR O MESMO VALOR, REMOVE
         } else {
           this.likeState.splice(i, 1)
         }
@@ -161,12 +150,14 @@ export default {
   created: function () {
     if (this.likeState !== undefined) {
       const stateId = this.likeState.find((like) => like.id == this.$store.state.id)
-      if (stateId.result == true) {
-        this.likeTrigger = false
-        this.dislikeTrigger = true
-      } else {
-        this.likeTrigger = true
-        this.dislikeTrigger = false
+      if (stateId !== undefined) {
+        if (stateId.result == true) {
+          this.likeTrigger = false
+          this.dislikeTrigger = true
+        } else {
+          this.likeTrigger = true
+          this.dislikeTrigger = false
+        }
       }
     }
   },
