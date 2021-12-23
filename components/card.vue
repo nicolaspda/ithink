@@ -50,6 +50,23 @@
         </v-col>
       </v-row>
     </v-card-text>
+     <v-snackbar
+      v-model="snackbar"
+      rounded
+    >
+      {{ texto }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="blue"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          Fechar
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-card>
 </template>
 
@@ -73,35 +90,46 @@ export default {
       dislikeTrigger: true,
       upResult: this.resultUp,
       downResult: this.resultDown,
+      snackbar: false,
+      texto: ''
     }
   },
   methods: {
     countUp() {
+      this.snackbar = true
       this.likeTrigger = !this.likeTrigger
       if (this.dislikeTrigger === false) {
+        this.texto = "Like removido"
         this.dislikeTrigger = true
         this.downResult -= 1
         this.registerLike(true)
+
       }
       if (this.likeTrigger === false) {
         this.upResult += 1
+        this.texto = 'Marcado como "Gostei"'
         this.registerLike(true)
       } else {
         this.upResult -= 1
+        this.texto = "Like removido"
         this.registerLike(false)
       }
     },
     countDown() {
+      this.snackbar = true
       this.dislikeTrigger = !this.dislikeTrigger
       if (this.likeTrigger === false) {
+        this.texto = "Dislike removido"
         this.likeTrigger = true
         this.upResult -= 1
         this.registerLike(false)
       }
       if (this.dislikeTrigger === false) {
+        this.texto = 'Marcado como "Não Gostei"'
         this.downResult += 1
         this.registerLike(false)
       } else {
+        this.texto = "Dislike removido"
         this.downResult -= 1
         this.registerLike(true)
       }
