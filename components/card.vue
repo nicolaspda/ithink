@@ -147,7 +147,7 @@ export default {
         }
       }
       let indexDb = this.allCards.findIndex((i) => i.id == this.id)
-            const response = await axios.put(
+                  await axios.put(
                   'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/' + this.cardIndex + '/likeState/.json',
                   this.likeState
                 )
@@ -155,7 +155,6 @@ export default {
                   'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/' + this.cardIndex + '/.json',
                   this.auxResult
                 )
-                console.log(response.data)
           },
   },
   //REGISTRA OS LIKES DE QUEM JÁ OPINOU

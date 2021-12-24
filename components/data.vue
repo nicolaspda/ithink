@@ -264,7 +264,7 @@ export default {
             'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O.json',
             this.allCards
           )
-          console.log(response.data)
+          console.log("Adiciona dados")
           this.dialog = false
           //Adiciona os dados caso seja o primeiro Card do assunto
         } catch (e) {
@@ -278,13 +278,11 @@ export default {
           }
           this.allCards.push(firstCard)
           console.log('FirstCard')
-          console.log(this.allCards)
 
-          const response = await axios.put(
+            await axios.put(
             'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O.json',
             this.allCards
           )
-          console.log(response.data)
           this.dialog = false
         }
       }
