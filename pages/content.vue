@@ -74,7 +74,7 @@
               <Card
                 v-for="(card, key) in card.comments"
                 :key="key"
-                :chave="key"
+                :cardIndex="key"
                 :title="title"
                 :id="id"
                 :resultUp.sync="card.resultUp"

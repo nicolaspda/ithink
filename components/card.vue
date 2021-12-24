@@ -75,7 +75,7 @@ export default {
     picture: String,
     likeState: Array,
     allCards: Array,
-    chave: String
+    cardIndex: Number
   },
   data: function () {
     return {
@@ -147,9 +147,14 @@ export default {
       }
       let indexDb = this.allCards.findIndex((i) => i.id == this.id)
             const response = await axios.put(
-                  'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/' + this.chave + '/likeState/.json',
+                  'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/' + this.cardIndex + '/likeState/.json',
                   this.likeState
                 )
+                /*
+                axios.put(
+                  'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/' + this.cardIndex + '/.json',
+                  VALOR
+                )*/
                 console.log(response.data)
           },
   },
