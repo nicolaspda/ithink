@@ -84,6 +84,7 @@
                 :picture="card.picture"
                 :cardSample="filterCards"
                 :likeState="card.likeState"
+                :allCards="cards"
               />
             </transition-group>
           </div>
