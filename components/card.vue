@@ -27,11 +27,11 @@
         <v-col align="right">
           <v-btn v-if="likeTrigger" class="ma-2" text icon @click="countUp">
             <v-icon color="grey">mdi-thumb-up-outline</v-icon>
-            {{ resultUp }}
+            {{ auxResult.resultUp }}
           </v-btn>
           <v-btn v-else class="ma-2" text icon @click="countUp">
             <v-icon color="grey">mdi-thumb-up</v-icon>
-            {{ resultUp }}
+            {{ auxResult.resultUp }}
           </v-btn>
           <v-btn
             v-if="dislikeTrigger"
@@ -41,11 +41,11 @@
             @click="countDown"
           >
             <v-icon color="grey">mdi-thumb-down-outline</v-icon>
-            {{ resultDown }}
+            {{ auxResult.resultDown }}
           </v-btn>
           <v-btn v-else class="ma-2" text icon @click="countDown">
             <v-icon color="grey">mdi-thumb-down</v-icon>
-            {{ resultDown }}
+            {{ auxResult.resultDown }}
           </v-btn>
         </v-col>
       </v-row>
@@ -84,6 +84,7 @@ export default {
       dislikeTrigger: true,
       snackbar: false,
       texto: '',
+      auxResult: {resultUp: this.resultUp, resultDown: this.resultDown}
     }
   },
   methods: {
@@ -93,15 +94,15 @@ export default {
       if (this.dislikeTrigger === false) {
         this.texto = '"Gostei" removido'
         this.dislikeTrigger = true
-        this.$emit('update:resultDown', this.resultDown -= 1)
+        this.auxResult.resultDown -= 1
         this.registerLike(true)
       }
       if (this.likeTrigger === false) {
-        this.$emit('update:resultUp', this.resultUp += 1)
+        this.auxResult.resultUp += 1
         this.texto = 'Marcado como "Gostei"'
         this.registerLike(true)
       } else {
-        this.$emit('update:resultUp', this.resultUp -= 1)
+        this.auxResult.resultUp -= 1
         this.texto = '"Gostei" removido'
         this.registerLike(false)
       }
@@ -112,16 +113,16 @@ export default {
       if (this.likeTrigger === false) {
         this.texto = '"Não Gostei" removido'
         this.likeTrigger = true
-        this.$emit('update:resultUp', this.resultUp -= 1)
+        this.auxResult.resultUp -= 1
         this.registerLike(false)
       }
       if (this.dislikeTrigger === false) {
         this.texto = 'Marcado como "Não Gostei"'
-        this.$emit('update:resultDown', this.resultDown += 1)
+        this.auxResult.resultDown += 1
         this.registerLike(false)
       } else {
         this.texto = '"Não Gostei" removido'
-        this.$emit('update:resultDown', this.resultDown -= 1)
+        this.auxResult.resultDown -= 1
         this.registerLike(true)
       }
     },
@@ -150,11 +151,10 @@ export default {
                   'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/' + this.cardIndex + '/likeState/.json',
                   this.likeState
                 )
-                /*
-                axios.put(
+                axios.patch(
                   'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/' + this.cardIndex + '/.json',
-                  VALOR
-                )*/
+                  this.auxResult
+                )
                 console.log(response.data)
           },
   },
