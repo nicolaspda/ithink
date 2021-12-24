@@ -7,7 +7,8 @@
       rounded
       dense
       solo
-      hide-no-data
+      :hide-no-data=hide
+      no-data-text="Não encontrado"
       label="Pesquise aqui"
       :items="titulos"
       item-text="name"
@@ -57,6 +58,7 @@ export default {
       titulos: [],
       search: '',
       isLoading: false,
+      hide: true
     }
   },
   methods: {
@@ -77,6 +79,7 @@ export default {
       this._timerId = setTimeout(() => {
         this.gettitulo()
         this.isLoading = false
+        this.hide = false
       }, 1500)
     },
   },
