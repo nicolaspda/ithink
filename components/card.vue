@@ -73,9 +73,9 @@ export default {
     grade: Boolean,
     person: String,
     picture: String,
-    cardSample: Array,
     likeState: Array,
-    allCards: Array
+    allCards: Array,
+    chave: String
   },
   data: function () {
     return {
@@ -147,7 +147,7 @@ export default {
       }
       let indexDb = this.allCards.findIndex((i) => i.id == this.id)
             const response = await axios.put(
-                  'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/0/likeState/.json',
+                  'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/' + this.chave + '/likeState/.json',
                   this.likeState
                 )
                 console.log(response.data)
