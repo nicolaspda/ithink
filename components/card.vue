@@ -27,11 +27,11 @@
         <v-col align="right">
           <v-btn v-if="likeTrigger" class="ma-2" text icon @click="countUp">
             <v-icon color="grey">mdi-thumb-up-outline</v-icon>
-            {{ upResult }}
+            {{ resultUp }}
           </v-btn>
           <v-btn v-else class="ma-2" text icon @click="countUp">
             <v-icon color="grey">mdi-thumb-up</v-icon>
-            {{ upResult }}
+            {{ resultUp }}
           </v-btn>
           <v-btn
             v-if="dislikeTrigger"
@@ -41,11 +41,11 @@
             @click="countDown"
           >
             <v-icon color="grey">mdi-thumb-down-outline</v-icon>
-            {{ downResult }}
+            {{ resultDown }}
           </v-btn>
           <v-btn v-else class="ma-2" text icon @click="countDown">
             <v-icon color="grey">mdi-thumb-down</v-icon>
-            {{ downResult }}
+            {{ resultDown }}
           </v-btn>
         </v-col>
       </v-row>
@@ -62,10 +62,12 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   props: {
     title: String,
     description: String,
+    id: String,
     resultUp: Number,
     resultDown: Number,
     grade: Boolean,
@@ -73,14 +75,13 @@ export default {
     picture: String,
     cardSample: Array,
     likeState: Array,
+    allCards: Array
   },
   data: function () {
     return {
       //Likes
       likeTrigger: true,
       dislikeTrigger: true,
-      upResult: this.resultUp,
-      downResult: this.resultDown,
       snackbar: false,
       texto: '',
     }
@@ -90,18 +91,18 @@ export default {
       this.snackbar = true
       this.likeTrigger = !this.likeTrigger
       if (this.dislikeTrigger === false) {
-        this.texto = 'Like removido'
+        this.texto = '"Gostei" removido'
         this.dislikeTrigger = true
-        this.downResult -= 1
+        this.$emit('update:resultDown', this.resultDown -= 1)
         this.registerLike(true)
       }
       if (this.likeTrigger === false) {
-        this.upResult += 1
+        this.$emit('update:resultUp', this.resultUp += 1)
         this.texto = 'Marcado como "Gostei"'
         this.registerLike(true)
       } else {
-        this.upResult -= 1
-        this.texto = 'Like removido'
+        this.$emit('update:resultUp', this.resultUp -= 1)
+        this.texto = '"Gostei" removido'
         this.registerLike(false)
       }
     },
@@ -109,22 +110,22 @@ export default {
       this.snackbar = true
       this.dislikeTrigger = !this.dislikeTrigger
       if (this.likeTrigger === false) {
-        this.texto = 'Dislike removido'
+        this.texto = '"Não Gostei" removido'
         this.likeTrigger = true
-        this.upResult -= 1
+        this.$emit('update:resultUp', this.resultUp -= 1)
         this.registerLike(false)
       }
       if (this.dislikeTrigger === false) {
         this.texto = 'Marcado como "Não Gostei"'
-        this.downResult += 1
+        this.$emit('update:resultDown', this.resultDown += 1)
         this.registerLike(false)
       } else {
-        this.texto = 'Dislike removido'
-        this.downResult -= 1
+        this.texto = '"Não Gostei" removido'
+        this.$emit('update:resultDown', this.resultDown -= 1)
         this.registerLike(true)
       }
     },
-    registerLike(val) {
+    async registerLike(val) {
       //Se existe id, remove a atual
       if (this.likeState !== undefined) {
         const stateId = this.likeState.find(
@@ -144,7 +145,13 @@ export default {
           this.likeState.splice(i, 1)
         }
       }
-    },
+      let indexDb = this.allCards.findIndex((i) => i.id == this.id)
+            const response = await axios.put(
+                  'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/0/likeState/.json',
+                  this.likeState
+                )
+                console.log(response.data)
+          },
   },
   //REGISTRA OS LIKES DE QUEM JÁ OPINOU
   created: function () {
