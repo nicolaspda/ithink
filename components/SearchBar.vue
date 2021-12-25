@@ -70,6 +70,7 @@ export default {
         )
         .then((response) => {
           this.titulos = response.data.results
+          this.hide = false
         })
     },
     go: function () {
@@ -79,7 +80,6 @@ export default {
       this._timerId = setTimeout(() => {
         this.gettitulo()
         this.isLoading = false
-        this.hide = false
       }, 1500)
     },
   },
