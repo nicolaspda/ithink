@@ -11,7 +11,6 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/firebase": "^8.1.1",
-    "@nuxtjs/pwa": "^3.3.5",
     "animate.css": "^4.1.1",
     "core-js": "^3.15.1",
     "firebase": "^9.6.1",
@@ -20,11 +19,12 @@
     "vuetify": "^2.5.5"
   },
   "devDependencies": {
+    "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/vuetify": "^1.12.1",
     "eslint-config-prettier": "^8.3.0",
     "prettier": "^2.3.2"
   },
-  "description": "```bash\r # install dependencies\r $ npm install",
+  "description": "Informe para o mundo o que você pensa sobre filmes, séries, pessoas e programas de TV! - Consulte a nota e identifique o que todos acham sobre um tema - iThink",
   "main": "nuxt.config.js",
   "repository": {
     "type": "git",
