@@ -22,6 +22,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/vuetify": "^1.12.1",
     "eslint-config-prettier": "^8.3.0",
+    "nuxt-compress": "^5.0.0",
     "prettier": "^2.3.2"
   },
   "description": "Informe para o mundo o que você pensa sobre filmes, séries, pessoas e programas de TV! - Consulte a nota e identifique o que todos acham sobre um tema - iThink",

@@ -50,7 +50,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'nuxt-compress'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
