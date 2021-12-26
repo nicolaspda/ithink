@@ -104,6 +104,8 @@ export default {
   pwa: {
     manifest: {
       name: 'ithink',
+      short_name: 'ithink',
+      description: 'Informe para o mundo o que você pensa sobre filmes, séries, pessoas e programas de TV! - Consulte a nota e identifique o que todos acham sobre um tema - iThink',      
       lang: 'en',
       useWebmanifestExtension: false,
     },
