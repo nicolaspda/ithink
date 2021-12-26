@@ -64,7 +64,7 @@ export default {
       /* module options */
       defaultUrl: 'https://ithink.vercel.app/',
       hostName: 'iThink',
-      applicationId: 'com.ithink.example',
+      applicationId: 'com.example.ithink',
       launcherName: 'iThink',
       versionCode: 1,
       versionName: '1.0',
@@ -72,10 +72,10 @@ export default {
       // The sha256Fingerprints by is an array with one SHA-256 key string.
       // But if you have multiple you can add them to the array. More information about the website asociation:
       // https://developer.android.com/training/app-links/verify-site-associations#web-assoc
-      sha256Fingerprints: ['17:C7:B3:E1:80:63:C6:81:1B:C4:A4:75:33:08:02:19:A3:5F:FA:EC:46:E6:49:E0:FF:69:A2:DC:BE:75:60:B4'],
+      sha256Fingerprints: ['3E:A9:BC:59:A0:C2:9E:52:F1:19:C2:33:4B:F7:72:B9:13:45:C2:E3:20:1A:F5:5B:36:2B:7B:95:1E:85:98:4E'],
       /* optional */
       /* overwrite default location for icon */
-      iconPath: '/static/icon-app.png',
+      iconPath: '/static/iconapp.png',
       /* Overwrite folder where to put .wellknown */
       distFolder: '.nuxt/dist/client',
     }],
