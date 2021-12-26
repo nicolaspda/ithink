@@ -53,7 +53,6 @@ export default {
     '@nuxtjs/pwa',
     'nuxt-compress'
   ],
-
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
@@ -104,7 +103,9 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
+      name: 'ithink',
       lang: 'en',
+      useWebmanifestExtension: false,
     },
     icon: {
       fileName: 'iconapp.png',
