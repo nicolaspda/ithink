@@ -72,9 +72,9 @@
           <div v-for="card in filterCards" :key="card.name">
             <transition-group name="component-fade" mode="out-in" appear>
               <Card
-                v-for="(card, key) in card.comments"
+                v-for="(card, key) in orderComment(card.comments)"
                 :key="key"
-                :cardIndex="key"
+                :cardId="card.id"
                 :title="title"
                 :id="id"
                 :resultUp="card.resultUp"
@@ -85,6 +85,7 @@
                 :picture="card.picture"
                 :likeState="card.likeState"
                 :allCards="cards"
+                :cardSample="filterCards"
               />
             </transition-group>
           </div>
@@ -149,6 +150,9 @@ export default {
         .then((response) => {
           this.cards = response.data
         })
+    },
+    orderComment: function (card) {
+      return card.slice().reverse()
     },
   },
   created: function () {

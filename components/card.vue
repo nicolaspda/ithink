@@ -68,6 +68,7 @@ export default {
     title: String,
     description: String,
     id: String,
+    cardId: String,
     resultUp: Number,
     resultDown: Number,
     grade: Boolean,
@@ -75,7 +76,7 @@ export default {
     picture: String,
     likeState: Array,
     allCards: Array,
-    cardIndex: Number
+    cardSample: Array
   },
   data: function () {
     return {
@@ -147,12 +148,13 @@ export default {
         }
       }
       let indexDb = this.allCards.findIndex((i) => i.id == this.id)
+      let indexComment = this.cardSample[0].comments.findIndex((i) => i.id == this.cardId)
                   await axios.put(
-                  'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/' + this.cardIndex + '/likeState/.json',
+                  'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/' + indexComment + '/likeState/.json',
                   this.likeState
                 )
                 axios.patch(
-                  'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/' + this.cardIndex + '/.json',
+                  'https://ithink-332305-default-rtdb.firebaseio.com/-MrGnWn3O0JppoR9IK4O/' + indexDb + '/comments/' + indexComment + '/.json',
                   this.auxResult
                 )
           },
