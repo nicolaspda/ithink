@@ -12,9 +12,7 @@
           <v-icon v-else color="red lighten-2">mdi-thumb-down</v-icon>
         </v-col>
         <v-col cols="9" align="center">
-          <NuxtLink to="/inspire">
             {{ description }}
-          </NuxtLink>
         </v-col>
       </v-row>
       <hr class="my-3" />
