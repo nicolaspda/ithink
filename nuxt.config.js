@@ -60,6 +60,25 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    ['nuxt-twa-module', {
+      /* module options */
+      defaultUrl: 'https://ithink.vercel.app/',
+      hostName: 'iThink',
+      applicationId: 'com.ithink.example',
+      launcherName: 'iThink',
+      versionCode: 1,
+      versionName: '1.0',
+      statusBarColor: '#808080',
+      // The sha256Fingerprints by is an array with one SHA-256 key string.
+      // But if you have multiple you can add them to the array. More information about the website asociation:
+      // https://developer.android.com/training/app-links/verify-site-associations#web-assoc
+      sha256Fingerprints: ['17:C7:B3:E1:80:63:C6:81:1B:C4:A4:75:33:08:02:19:A3:5F:FA:EC:46:E6:49:E0:FF:69:A2:DC:BE:75:60:B4'],
+      /* optional */
+      /* overwrite default location for icon */
+      iconPath: '/static/icon-app.png',
+      /* Overwrite folder where to put .wellknown */
+      distFolder: '.nuxt/dist/client',
+    }],
     [
       '@nuxtjs/firebase',
       {
