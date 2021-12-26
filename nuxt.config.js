@@ -5,34 +5,43 @@ export default {
   head: {
     titleTemplate: '%s - ithink',
     title: '',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Informe para o mundo o que você pensa sobre filmes, séries, pessoas e programas de TV! - Consulte a nota e identifique o que todos acham sobre um tema - iThink' },
-      { name: 'format-detection', content: 'telephone=no' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ],
-    script: [
+    meta: [{
+        charset: 'utf-8'
+      },
       {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Informe para o mundo o que você pensa sobre filmes, séries, pessoas e programas de TV! - Consulte a nota e identifique o que todos acham sobre um tema - iThink'
+      },
+      {
+        name: 'format-detection',
+        content: 'telephone=no'
+      }
+    ],
+    link: [{
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '/faviconapp.ico'
+    }],
+    script: [{
         src: "https://accounts.google.com/gsi/client",
         async: true,
       },
       {
-        src:
-          'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'
       }
     ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -76,10 +85,11 @@ export default {
   pwa: {
     manifest: {
       lang: 'en',
-        icon: {
-             fileName: 'icon.png',
-        },
-    }
+    },
+    icon: {
+      fileName: 'iconapp.png',
+      sizes: [64, 120, 144, 152, 192, 384, 512]
+    },
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -102,6 +112,5 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
+  build: {}
 }
