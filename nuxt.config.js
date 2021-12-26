@@ -8,7 +8,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Informe para o mundo o que você pensa sobre filmes, séries, pessoas e programas de TV! - Consulte a nota e identifique o que todos acham sobre um tema - iThink' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
