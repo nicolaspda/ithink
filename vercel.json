@@ -5,12 +5,8 @@
         "src": "nuxt.config.js",
         "use": "@nuxtjs/vercel-builder",
         "config": {
-          "serverFiles": ["package.json", ".well-known/**"]
+          "serverFiles": ["package.json"]
         }
-      },
-      {
-        "src": ".well-known/**/*.js",
-        "use": "@vercel/node"
       }
     ],
     "routes": [
@@ -21,10 +17,6 @@
           "Cache-Control": "public, max-age=0, must-revalidate",
           "Service-Worker-Allowed": "/"
         }
-      },
-      {
-        "src": "/.well-known",
-        "dest": "/.well-known/.well-known.js"        
       }
     ]
   }
