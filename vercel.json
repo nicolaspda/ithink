@@ -5,8 +5,12 @@
         "src": "nuxt.config.js",
         "use": "@nuxtjs/vercel-builder",
         "config": {
-          "serverFiles": ["package.json"]
+          "serverFiles": ["package.json", ".well-known/**"]
         }
+      },
+      {
+        "src": ".well-known/**/*.js",
+        "use": "@vercel/node"
       }
     ],
     "routes": [
@@ -19,8 +23,8 @@
         }
       },
       {
-        "src": ".well-known/assetlinks.json",
-        "continue": true        
+        "src": "/.well-known",
+        "dest": "/.well-known/.well-known.js"        
       }
     ]
   }
