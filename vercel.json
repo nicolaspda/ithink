@@ -19,7 +19,7 @@
         }
       },
       {
-        "src": "/.well-known/assetlinks.json",
+        "src": ".well-known/assetlinks.json",
         "continue": true        
       }
     ]
