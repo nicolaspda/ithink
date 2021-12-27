@@ -17,6 +17,10 @@
           "Cache-Control": "public, max-age=0, must-revalidate",
           "Service-Worker-Allowed": "/"
         }
+      },
+      {
+        "src": "/.well-known/assetlinks.json",
+        "continue": true        
       }
     ]
   }
