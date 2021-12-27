@@ -74,9 +74,9 @@ export default {
       sha256Fingerprints: ['3E:A9:BC:59:A0:C2:9E:52:F1:19:C2:33:4B:F7:72:B9:13:45:C2:E3:20:1A:F5:5B:36:2B:7B:95:1E:85:98:4E'],
       /* optional */
       /* overwrite default location for icon */
-      iconPath: '/static/iconapp.png',
+      iconPath: '/static/icon.png',
       /* Overwrite folder where to put .wellknown */
-      distFolder: '.nuxt/dist/client',
+      distFolder: '.nuxt/dist/client/.well-known',
     }],
     [
       '@nuxtjs/firebase',
@@ -110,7 +110,7 @@ export default {
       useWebmanifestExtension: false,
     },
     icon: {
-      fileName: 'iconapp.png',
+      fileName: 'icon.png',
       sizes: [64, 120, 144, 152, 192, 384, 512]
     },
   },
