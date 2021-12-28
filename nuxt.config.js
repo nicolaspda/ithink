@@ -78,6 +78,9 @@ export default {
       /* Overwrite folder where to put .wellknown */
       distFolder: '.nuxt/dist/client/.well-known',
     }],
+    ['@nuxtjs/google-adsense', {
+      id: 'ca-pub-7450329376979943'
+    }],
     [
       '@nuxtjs/firebase',
       {
