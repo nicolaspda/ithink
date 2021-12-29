@@ -15,13 +15,17 @@
 
 <script>
 export default {
-  data() {
+  head() {
     return {
+      title: 'About',
     }
   },
-   mounted: function () {
+  data() {
+    return {}
+  },
+  mounted: function () {
     this.$store.commit('alterLogin')
     this.$router.push('/')
-  }
+  },
 }
 </script>
