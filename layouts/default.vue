@@ -22,15 +22,13 @@ export default {
   name: 'default',
   data: function () {
     return {
-      routeState: true,
       routeName: 'About',
       page: '/about',
     }
   },
   methods: {
-    changeData: function () {
-      this.routeState = !this.routeState
-      if (this.routeState) {
+    changeData: function () {      
+      if (this.$nuxt._route.path !== '/about') {
         this.routeName = 'About'
         this.page = '/about'
       } else {
