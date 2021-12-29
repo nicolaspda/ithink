@@ -72,7 +72,9 @@
           </div>
         </v-card>
       </v-col>
-      <v-banner dark><adsbygoogle /></v-banner>
+      <v-col>
+       <adsbygoogle ad-format="fluid"/>
+     </v-col>
     </v-col>
   </v-row>
 </template>
