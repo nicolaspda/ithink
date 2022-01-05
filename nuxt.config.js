@@ -63,7 +63,7 @@ export default {
       /* module options */
       defaultUrl: 'https://ithink.vercel.app/',
       hostName: 'iThink',
-      applicationId: 'com.example.ithink',
+      applicationId: 'com.app.ithink',
       launcherName: 'iThink',
       versionCode: 1,
       versionName: '1.0',
