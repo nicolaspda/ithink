@@ -67,7 +67,7 @@ export default {
       launcherName: 'iThink',
       versionCode: 1,
       versionName: '1.0',
-      statusBarColor: '#808080',
+      statusBarColor: '#5f67b6',
       // The sha256Fingerprints by is an array with one SHA-256 key string.
       // But if you have multiple you can add them to the array. More information about the website asociation:
       // https://developer.android.com/training/app-links/verify-site-associations#web-assoc
@@ -106,11 +106,12 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      name: 'ithink',
-      short_name: 'ithink',
+      name: 'iThink',
+      short_name: 'iThink',
       description: 'Informe para o mundo o que você pensa sobre filmes, séries, pessoas e programas de TV! - Consulte a nota e identifique o que todos acham sobre um tema - iThink',      
       lang: 'en',
       useWebmanifestExtension: false,
+      background_color: '#5f67b6'
     },
     icon: {
       fileName: 'icon.png',
